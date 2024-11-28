@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Carousel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #b2f5ea;
+        }
+        .container {
+            max-width: 800px;
+            text-align: center;
+        }
+        h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+        .carousel {
+            background-color: #1a202c;
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .feedback {
+            display: none;
+        }
+        .feedback.active {
+            display: block;
+        }
+        blockquote {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .profile img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .profile-info {
+            text-align: left;
+        }
+        .profile-info p {
+            margin: 0;
+        }
+        .profile-info .name {
+            font-weight: bold;
+        }
+        .profile-info .role {
+            color: #a0aec0;
+            font-size: 0.9em;
+        }
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .prev {
+            left: -20px;
+        }
+        .next {
+            right: -20px;
+        }
+        .dots {
+            margin-top: 20px;
+        }
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #cbd5e0;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .dot.active {
+            background-color: #2d3748;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Feedback</h2>
+        <div class="carousel">
+            <div class="feedback active">
+                <blockquote>Quis nostrum aliquam iste quam fugam fere sunt amet morem atque aliqua veniam tempur noster menses sunt aliquam fugit.</blockquote>
+                <div class="profile">
+                    <img src="https://via.placeholder.com/60" alt="John Larson">
+                    <div class="profile-info">
+                        <p class="name">John Larson</p>
+                        <p class="role">Entrepreneur</p>
+                    </div>
+                </div>
+            </div>
+            <div class="feedback">
+                <blockquote>Phasit dusciis justo consequat sunt sore digni espam denim porttitur enism tempur feugins. Accussamus enism sunt ut. Offiica qut.</blockquote>
+                <div class="profile">
+                    <img src="https://via.placeholder.com/60" alt="Saul Rosa Ruacan">
+                    <div class="profile-info">
+                        <p class="name">Saul Rosa Ruacan</p>
+                        <p class="role">UX Designer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="feedback">
+                <blockquote>Eaperi minsor rium littem nesti malis erum quam sint esse labore quam ullam quat malis quaerat nulla nisi erum ullam erum.</blockquote>
+                <div class="profile">
+                    <img src="https://via.placeholder.com/60" alt="Sara Wilson">
+                    <div class="profile-info">
+                        <p class="name">Sara Wilson</p>
+                        <p class="role">Designer</p>
+                    </div>
+                </div>
+            </div>
+            <button class="nav-button prev">&lt;</button>
+            <button class="nav-button next">&gt;</button>
+        </div>
+        <div class="dots"></div>
+    </div>
+
+    <script>
+        const feedbacks = document.querySelectorAll('.feedback');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        const dotsContainer = document.querySelector('.dots');
+        let currentIndex = 0;
+
+        function showFeedback(index) {
+            feedbacks.forEach((feedback, i) => {
+                feedback.classList.toggle('active', i === index);
+            });
+            updateDots();
+        }
+
+        function createDots() {
+            feedbacks.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => showFeedback(i));
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + feedbacks.length) % feedbacks.length;
+            showFeedback(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % feedbacks.length;
+            showFeedback(currentIndex);
+        });
+
+        createDots();
+        updateDots();
+    </script>
+</body>
+</html>

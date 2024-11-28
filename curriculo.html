@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="icon" href="img/icontest.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Currículo</title>
+</head>
+<style>
+body{
+  background-color: #ADDFD0;
+  position: relative;
+}
+  
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  margin-top: 1%;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 30px;
+  padding-right: 30%;
+  padding-left: 30%;
+  margin: 0;
+  display: flex;
+  justify-content: space-around; 
+  position: fixed; 
+  top: 0;
+  width: 40%;
+  background-color: transparent; 
+  transition: background-color 0.3s ease; 
+  z-index: 1000; 
+}
+
+@media screen and (max-width: 1440px){
+  .nav-list{
+    padding-left: 27%;
+    padding-right: 33%;
+  }
+}
+
+@media screen and (max-width: 1280px){
+  .nav-list{
+    padding: 25px;
+    padding-left: 22%;
+    padding-right: 40%;
+  }
+}
+  
+.nav-background {
+  background-color: #4BA0A3;
+}
+  
+@media (max-width: 1044px){
+  .nav-background{
+    background-color: transparent;
+  }
+}
+  
+.logo {
+  color: #3E7996;
+  font-size: 1.4rem;
+}
+
+.nav-list ul {
+  font-size: 1.5rem;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+    
+}
+
+.nav-list ul li {
+  margin: 0 45px;
+}
+
+.nav-list ul li a {
+  color: white;
+  text-decoration: none;
+}
+  
+  .menu-icon {
+  font-size: 24px;
+  color: #F3FFF3;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: none; 
+}
+
+.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -250px; 
+  background-color: #F3FFF3;
+  transition: left 0.3s;
+  padding-top: 60px;
+  z-index: 999;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  color: #4BA0A3;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.sidebar ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 1044px) {
+  .menu-icon {
+    display: block; 
+    z-index: 1000;
+  }
+
+  .nav-list {
+    display: none; 
+  }
+} 
+
+h1{
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 8%;
+    color: #2D2F48;
+    margin-bottom: 5%;
+}
+
+.container {
+    max-width: 1600px;
+    margin-left: 15%;
+    margin-right: 8%;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 2.3rem;
+    text-align: left;
+    color: #2D2F48;
+    margin-bottom: 2.5%;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+}
+
+.form-group {
+    flex: 1;
+    margin: 15px;
+    min-width: 220px; /* Define uma largura mínima para os campos */
+}
+
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="tel"] {
+    width: 80%;
+    padding: 20px;
+    background-color: #73B5B7;
+    border: none;
+    border-radius: 30px;
+    box-sizing: border-box;
+    color: #F3FFF3;
+    font-size: 1.5rem;
+}
+
+::-webkit-input-placeholder{
+  color: #F3FFF3;
+  font-size: 1.5rem;
+}
+
+.form-group-1 ::-webkit-input-placeholder{
+  color: #2D2F48;
+  font-size: 1.5rem;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    .form-group {
+        flex: 100%; /* Em telas menores, cada campo ocupa a largura total */
+    }
+}
+
+.container-1{
+    background-color: #3E7996;
+    height: 2000px;
+    margin-top: 8%;
+    padding-top: 50px;
+}
+
+input[type="link"],
+input[type="insta"] {
+    width: 80%;
+    padding: 20px;
+    background-color: #ADDFD0;
+    border: none;
+    border-radius: 30px;
+    box-sizing: border-box;
+    color: #2D2F48;
+    font-size: 1.5rem;
+}
+
+input[type="link"]:focus,
+input[type="insta"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+input[type="link-1"]{
+  width: 80%;
+    padding: 20px;
+    background-color: #2D2F48;
+    border: none;
+    color: #F3FFF3;
+    border-radius: 30px;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 2.3rem;
+    text-align: left;
+    color: white;
+    margin-left: 10%;
+    margin-bottom: 2.5%;
+    
+}
+
+.form-row-1{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+    margin-left: 10%;
+}
+
+.form-group-1{
+    flex: 1;
+    margin: 15px;
+    min-width: 220px; 
+    margin-bottom: 3%;
+}
+
+.form-row-3{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+    margin-left: 10%;
+}
+
+.form-group-3{
+    flex: 1;
+    margin: 15px;
+    min-width: 220px; 
+    margin-bottom: 8%;
+}
+
+.radio-list {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 6%;
+        }
+        .radio-list li {
+            margin: 10px 0;
+            margin-left: 10%;
+            font-size: 1.5rem;
+        }
+        .radio-list input[type="radio"] {
+            appearance: none; 
+            width: 20px;
+            height: 20px; 
+            border: 2px solid #73B5B7; 
+            border-radius: 50%;
+            cursor: pointer; 
+            position: relative; 
+        }
+        .radio-list input[type="radio"]:checked {
+            background-color: #73B5B7; 
+            border: 2px solid #73B5B7; 
+        }
+        .radio-list input[type="radio"]:checked::before {
+            content: '';
+            width: 15px; 
+            height: 15px; 
+            background-color: #73B5B7; 
+            border-radius: 50%; 
+            position: absolute;
+            top: 0; 
+            left: 0; 
+        }
+label{
+  color: #F3FFF3;
+}
+
+.language-container {
+      align-items: center;
+      padding: 10px;
+      cursor: pointer;
+      margin-bottom: 10%;
+      text-align: center;
+    }
+
+    .language-options {
+      position: relative;
+      background-color: #eaffea;
+      border-radius: 5px;
+      padding: 10px;
+      margin-left: 65%;
+      margin-right: 20%;
+      z-index: 1;
+      display: none;
+      margin-top: -15%;
+    
+    }
+
+    .language-options a {
+      font-size: 1.3rem;
+      display: block;
+      padding: 12px 0;
+      color: #2D2F48;
+      text-decoration: none;
+    }
+
+    .language-options a:hover {
+      color: #3E7996;
+    }
+
+    .selected-language {
+      color: #f3fff3;
+      font-size: 1.5rem;
+    }
+
+    .selected-language{
+      color: #F3FFF3;
+      font-size: 1.5rem;
+      margin-left: -25%;
+    }
+
+.barra {
+  width: 60%; 
+  height: 1px; 
+  background-color: transparent; 
+  margin: 20px 0;
+  margin-left: 20%;
+}
+
+.linha {
+  height: 1px; 
+  background-color: #eaffea; 
+  width: 60%; 
+  top: 50%; 
+  left: 0;
+}
+
+.container-6{
+  height: 200px;
+  padding: 2% 1%;
+  background-color: #ADDFD0;
+}
+
+.footer{
+  font-size: 1.3rem;
+  list-style: none;
+  text-align: center;
+  margin-top: 2%;
+}
+
+@media screen and (max-width: 860px){
+  .footer{
+    font-size: 0.8rem;
+  }
+}
+
+.footer li{
+  display: inline;
+}
+
+.footer ul li a{
+  color: #1F99A5;
+  margin-left: 1.5%;
+  text-decoration: none;
+}
+
+.email p{
+  margin-top: 2%;
+  color: #3E7996;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 860px){
+  .email p{
+    font-size: 0.8rem;
+  }
+}
+
+footer{
+  background-color: #2D2F48;
+  height: 30px;
+}
+
+h6{
+  text-align: center;
+  font-size: 3em;
+  color: #2D2E47;
+  margin-top: 1%;
+}
+
+@media screen and (max-width: 860px){
+  h6{
+    font-size: 1.3em;
+  }
+}
+
+.button {
+            margin-top: -5%;
+            width: 15%;
+            align-items: center;
+            margin-bottom: 5%;
+            float: right;
+        }
+        .button a {
+            padding: 10px 20px;
+            background-color: #73B5B7;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            flex: 1; /* Para dividir igualmente */
+            margin: 0 5px; /* Espaço entre os botões */
+        }
+        .button a:hover {
+            background-color: #ADDFD0;
+        }
+
+.form-row-2{
+    display: none;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: 10%;
+    margin-bottom: 6%;
+    margin-top: 1%;
+}
+
+.hidden {
+  display: none;
+}
+
+.reader-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.speed-control {
+  margin-top: 10px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none; 
+  appearance: none; 
+  width: 80%;  
+  background: #F3FFF3; 
+  border-radius: 100px; 
+  outline: none; 
+  border: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  border: none;
+  -webkit-appearance: none; 
+  appearance: none; 
+  width: 15px; 
+  height: 15px; 
+  border-radius: 50%;
+  background: #2D3748; 
+  cursor: pointer; 
+}
+input[type="range"]::-moz-range-thumb {
+  border: none;
+  width: 15px; 
+  height: 8px; 
+  border-radius: 50%; 
+  background: #2D3748; 
+  cursor: pointer; 
+}
+
+#accessibility-menu {
+  position: fixed;
+  top: 275px;
+  left: 20px;
+  background-color: #4BA0A3;
+  padding: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000; 
+  border: none;
+}
+
+.accessibility-button {
+  position: fixed; 
+  right: 10px; 
+  top: 320px; 
+  z-index: 1000; 
+}
+
+.accessibility-button button {
+  background-color: #3185F0; 
+  color: white;
+  border: none; 
+  padding: 5.5px; 
+  border-radius: 10px; 
+  cursor: pointer; 
+  font-size: 1.8rem;
+}
+
+.botao button {
+  background-color: #F3FFF3; 
+  color: #2d3748; 
+  border: none; 
+  width: 290px;
+  padding: 10px;
+  border-radius: 10px; 
+  cursor: pointer;
+  font-size: 1.3rem; 
+  margin-top: 5px; 
+  transition: background-color 0.3s, transform 0.2s; 
+}
+
+select{
+  color: #2D3748; 
+  border: none; 
+  background-color: #F3FFF3; 
+  width: 290px;
+  padding: 10px;
+  border-radius: 10px; 
+  cursor: pointer;
+  font-size: 1.3rem; 
+  margin-top: 5px; 
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+body.high-contrast select {
+  background-color: #444;
+  color: #fff;
+}
+
+body.high-contrast #accessibility-menu {
+  background-color: #1a202c;
+  color: #fff;
+}
+
+body.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Estilos para alto contraste */
+body.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+body.high-contrast ul li a {
+  color: #0ff; 
+  text-decoration: underline; 
+}
+
+body.high-contrast nav,
+body.high-contrast .nav-background,
+body.high-contrast header,
+body.high-contrast footer {
+  background-color: #222; /* Cor de fundo para barras de navegação e rodapé */
+  color: #fff;
+}
+
+body.high-contrast .container,
+body.high-contrast .container-1,
+body.high-contrast .container-3,
+body.high-contrast .container-5{
+  background-color: #222;
+  color: #fff;
+}
+
+body.high-contrast .container-2,
+body.high-contrast .container-4,
+body.high-contrast .container-6 {
+  background-color: #333;
+  color: #fff;
+}
+
+body.high-contrast button {
+  background-color: #444;
+  color: #fff;
+  border-color: #fff;
+}
+
+body.high-contrast button:hover {
+  background-color: #555;
+}
+
+body.high-contrast input{
+  background-color: #F3FFF3;
+  color: #000;
+}
+
+body.high-contrast textarea {
+  background-color: #222;
+  color: #fff;
+  border-color: #fff;
+}
+
+body.high-contrast .accordion-button {
+  background-color: #444;
+  color: #fff;
+}
+
+body.high-contrast .accordion-content {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Dots no carrossel */
+body.high-contrast .dot {
+  background-color: #fff;
+}
+
+body.high-contrast .dot.active {
+  background-color: #0ff;
+}
+
+/* Footer e texto */
+body.high-contrast p {
+  color: #ccc;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast h6 {
+  color: #fff;
+}
+
+nav.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+body.spaced-letters * {
+  letter-spacing: 1.5px;
+}
+
+body.underline-links a {
+  text-decoration: underline;
+}
+
+body.colorblind-mode img {
+  filter: grayscale(100%);
+}
+
+.font-size-slider{
+  margin: 0;
+  color: #eaffea;
+}
+
+</style>
+<body>
+    <header>
+        <nav>
+            <div class="sidebar" id="sidebar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="vagas.html">Vagas</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-list">
+            <ul >
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cursos.html">Cursos</a></li>                
+                <li><a href="vagas.html">Vagas</a></li>
+                <li><a href="sobre.html">Sobre</a></li>                
+                <li><a href="login.html">Login</a></li>
+            </ul>
+            </div>
+
+            <div class="menu-icon" onclick="toggleMenu()">
+                &#9776;
+            </div>
+        </nav>
+    </header>
+
+    <div class="accessibility-button">
+      <button id="accessibility-toggle">
+          <i class="fas fa-universal-access"></i>
+      </button>
+  </div>
+  <div id="accessibility-menu" class="hidden">
+      <div class="font-size-slider">
+          <span class="font-size-label small">A</span>
+          <span class="font-size-label large">A</span>
+          <input type="range" id="font-size-range" min="0" max="3" step="1" value="1" onchange="changeFontSize(this.value)">
+      </div> <br>
+      <div class="botao">
+          <button id="high-contrast-btn">Alto Contraste</button> <br>
+          <button onclick="toggleLetterSpacing()">Espaçamento de Letras</button> <br>
+          <button onclick="toggleUnderline()">Sublinhar Links</button> <br>
+          <select id="colorblind-type" onchange="changeColorblindType()">
+              <option value="normal">Adaptações para daltonismo</option>
+              <optgroup label="Formas Leves">
+                  <option value="protanomaly">Protanomalia (Vermelho fraco)</option>
+                  <option value="deuteranomaly">Deuteranomalia (Verde fraco)</option>
+                  <option value="tritanomaly">Tritanomalia (Azul fraco)</option>
+              </optgroup>
+              <optgroup label="Formas Severas">
+                  <option value="protanopia">Protanopia (Sem vermelho)</option>
+                  <option value="deuteranopia">Deuteranopia (Sem verde)</option>
+                  <option value="tritanopia">Tritanopia (Sem azul)</option>
+              </optgroup>
+              <optgroup label="Monocromacia">
+                  <option value="achromatomaly">Acromatomalia (Quase sem cores)</option>
+                  <option value="achromatopsia">Acromatopsia (Sem cores)</option>
+              </optgroup>
+          </select> <br>
+          <button onclick="startReading()">Iniciar Leitura</button> <br>
+          <button onclick="stopReading()">Parar Leitura</button> <br>
+          <div class="speed-control">
+              <label for="speed">Velocidade:</label> <br>
+              <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1">
+          </div>
+      </div>
+  </div>
+
+    <h1 class="text-to-read">Faça agora o seu currículo</h1>
+
+    <div class="container">
+        <h2 class="text-to-read">Dados Pessoais</h2>
+        <form>
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" id="nome" placeholder="Nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="cpf" placeholder="Sobrenome" name="cpf" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="tel" id="celular" placeholder="CPF" name="celular" maxlength="14" oninput="formatCPF(this)" required>
+                </div>
+               
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Celular" name="email" maxlength="15" oninput="formatPhone(this)" required>
+                </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                  <input type="date" id="date" name="date" required>
+              </div>
+              <div class="form-group">
+                  <input type="text" id="estado" placeholder="Possui alguma deficiência?" name="estado" required>
+              </div>
+          </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" id="endereco" placeholder="Nacionalidade" name="endereco" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="estado" placeholder="Email" name="estado" required>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container-1">
+        <form>
+            <h3 class="text-to-read">Rede sociais</h3>
+            <div class="form-row-1">
+                <div class="form-group-1">
+                    <input type="link" id="instagram" placeholder="Instagram" name="instagram" required>
+                </div>
+                <div class="form-group-1">
+                    <input type="insta" id="linkedin" placeholder="LinkedIn" name="linkedin" required>
+                </div>
+            </div>
+        </form>
+        <div>
+          <h3 class="text-to-read">Nível de escolaridade</h3>
+        <ul class="radio-list">
+            <li><input type="radio" id="opcao1" name="opcao"> <label for="opcao1">Ensino fundamental 1 completo</label></li>
+            <li><input type="radio" id="opcao2" name="opcao"> <label for="opcao2">Ensino fundamental 1 incompleto</label></li>
+            <li><input type="radio" id="opcao1" name="opcao"> <label for="opcao1">Ensino fundamental 2 completo</label></li>
+            <li><input type="radio" id="opcao2" name="opcao"> <label for="opcao2">Ensino fundamental 2 incompleto</label></li>
+            <li><input type="radio" id="opcao3" name="opcao"> <label for="opcao3">Ensino médio completo/cursando</label></li>
+            <li><input type="radio" id="opcao3" name="opcao"> <label for="opcao3">Ensino médio incompleto</label></li>
+            <li>
+              <input type="radio" id="opcao7" name="opcao" onclick="toggleTextBox()">
+              <label for="opcao7"><p class="text-to-read">Faculdade completa/cursando</p></label>
+          </li>
+        </ul>
+        </div>
+
+        <div class="form-row-2" id="textBoxContainer" style="display: none;">
+          <label for="detalhes"></label>
+          <input type="text" id="detalhes" placeholder="Qual curso você cursa/cursou?" name="detalhes">
+        </div>
+
+         <form>
+            <h3 class="text-to-read">Experiência</h3>
+            <div class="form-row-1">
+                <div class="form-group-1">
+                    <input type="link" id="instagram" placeholder="Qual a sua experiência profissional?" name="instagram" required>
+                </div>
+            </div>
+            <div class="form-row-1">
+              <div class="form-group-1">
+                  <input type="link" id="instagram" placeholder="Já fez algum curso?" name="instagram" required>
+              </div>
+          </div>
+        </form>
+        <h3 class="text-to-read">Idiomas</h3>
+         <div class="language-container">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+    <span class="selected-language">Português</span> 
+    <br>
+    <br>
+    <div class="barra">
+      <div class="linha"></div>
+    </div>
+    <br>
+    <br>
+    <span class="selected-language">+ adicionar idioma</span>
+    <div class="language-options">
+      <a href="#" onclick="selectLanguage('Inglês')">Inglês</a>
+      <a href="#" onclick="selectLanguage('Espanhol')">Espanhol</a>
+      <a href="#" onclick="selectLanguage('Francês')">Francês</a>
+      <a href="#" onclick="selectLanguage('Italiano')">Italiano</a>
+      <a href="#" onclick="selectLanguage('Alemão')">Alemão</a>
+      <a href="#" onclick="selectLanguage('Coreano')">Coreano</a>
+      <a href="#" onclick="selectLanguage('Japonês')">Japonês</a>
+      <a href="#" onclick="selectLanguage('Mandarim')">Mandarim</a>
+      <!-- Adicione mais opções de idioma conforme necessário -->
+    </div>
+  </div>
+    <form>
+        <h3 class="text-to-read">Objetivos Profissionais</h3>
+        <div class="form-row-3">
+            <div class="form-group-3">
+                <input type="link-1" id="instagram" placeholder="Quais são seus objetivos?" name="instagram" required>
+            </div>
+        </div>
+    </form>
+    <div>
+      <div class="button"><a href="#">Salvar</a></div>
+    </div>
+
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+  </div>
+
+  <script>
+
+let speech = new SpeechSynthesisUtterance();
+  const textElements = document.querySelectorAll('.text-to-read');
+  
+  function startReading() {
+      let fullText = Array.from(textElements).map(element => element.innerText).join(' ');
+      speech.text = fullText;
+      speech.rate = document.getElementById('speed').value;
+      window.speechSynthesis.speak(speech);
+  }
+
+  function stopReading() {
+      window.speechSynthesis.cancel();
+  }
+
+  document.getElementById('speed').addEventListener('input', function() {
+      speech.rate = this.value;
+  });
+
+function applyFontSize() {
+  const sizes = ['14px', '16px', '18px', '20px'];
+  const elements = document.querySelectorAll(
+      'a, button, h2, h3, h1, .accordion-button, .accordion-content'
+  );
+
+  elements.forEach((element) => {
+      element.style.fontSize = sizes[fontSize];
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const fontSizeRange = document.getElementById('font-size-range');
+  fontSizeRange.addEventListener('input', (e) => {
+      fontSize = parseInt(e.target.value);
+      applyFontSize();
+  });
+
+  // Aplicar configurações ao carregar a página
+  loadSettings();
+});
+
+
+function toggleLetterSpacing() {
+  document.body.style.letterSpacing = document.body.style.letterSpacing === '2px' ? 'normal' : '2px';
+}
+
+function toggleHighContrast() {
+  document.body.classList.toggle('high-contrast');
+}
+
+function toggleAccessibilityMenu() {
+  const menu = document.getElementById('accessibility-menu');
+  menu.classList.toggle('hidden');
+}
+
+function handleSearch() {
+  const query = document.getElementById('search-input').value.toLowerCase();
+  console.log('Consulta:', query); 
+  // lógica de pesquisa...
+}
+
+function toggleUnderline() {
+  const links = document.querySelectorAll('a');
+  links.forEach(link => {
+      link.style.textDecoration = link.style.textDecoration === 'underline' ? 'none' : 'underline';
+  });
+}
+  
+       // accessibility.js
+  document.addEventListener('DOMContentLoaded', function() {
+      const toggleButton = document.getElementById('accessibility-toggle');
+      const accessibilityMenu = document.getElementById('accessibility-menu');
+
+      toggleButton.addEventListener('click', function() {
+          // Alterna a classe 'hidden' para exibir ou ocultar o menu
+          accessibilityMenu.classList.toggle('hidden');
+      });
+  });
+
+// Selecionar o botão de alto contraste
+const highContrastToggle = document.getElementById('high-contrast-btn');
+
+// Alternar o modo de alto contraste
+highContrastToggle.addEventListener('click', () => {
+document.body.classList.toggle('high-contrast');
+});
+
+let colorblindMode = false;
+let highContrastMode = false;
+let fontSize = 1; // 0 = pequeno, 1 = médio, 2 = grande
+let colorblindType = 'normal';
+
+function toggleColorblindMode() {
+  colorblindMode = !colorblindMode;
+  localStorage.setItem('colorblindMode', colorblindMode);
+  applyColorblindMode();
+}
+
+function toggleHighContrastMode() {
+  highContrastMode = !highContrastMode;
+  localStorage.setItem('highContrastMode', highContrastMode);
+  applyHighContrastMode();
+}
+
+function changeFontSize(size) {
+  fontSize = size;
+  localStorage.setItem('fontSize', fontSize);
+  applyFontSize();
+  updateFontSizeSlider();
+}
+
+function changeColorblindType() {
+  const select = document.getElementById('colorblind-type');
+  colorblindType = select.value;
+  localStorage.setItem('colorblindType', colorblindType);
+  applyColorblindMode();
+}
+
+function applyColorblindMode() {
+  const filters = {
+      normal: 'none',
+      protanomaly: 'url("#protanomaly-filter")',
+      deuteranomaly: 'url("#deuteranomaly-filter")',
+      tritanomaly: 'url("#tritanomaly-filter")',
+      protanopia: 'url("#protanopia-filter")',
+      deuteranopia: 'url("#deuteranopia-filter")',
+      tritanopia: 'url("#tritanopia-filter")',
+      achromatopsia: 'url("#achromatopsia-filter")',
+      achromatomaly: 'url("#achromatomaly-filter")'
+  };
+
+  document.body.style.filter = filters[colorblindType];
+}
+
+function applyHighContrastMode() {
+  if (highContrastMode) {
+      document.body.classList.add('high-contrast');
+  } else {
+      document.body.classList.remove('high-contrast');
+  }
+}
+
+function applyFontSize() {
+  const sizes = ['14px', '16px', '18px'];
+  document.body.style.fontSize = sizes[fontSize];
+}
+
+function updateFontSizeSlider() {
+  const fontSizeRange = document.getElementById('font-size-range');
+  if (fontSizeRange) {
+      fontSizeRange.value = fontSize;
+  }
+}
+
+function loadSettings() {
+  colorblindMode = localStorage.getItem('colorblindMode') === 'true';
+  highContrastMode = localStorage.getItem('highContrastMode') === 'true';
+  fontSize = parseInt(localStorage.getItem('fontSize'));
+  colorblindType = localStorage.getItem('colorblindType') || 'normal';
+  
+  if (isNaN(fontSize) || fontSize < 0 || fontSize > 2) {
+      fontSize = 1;
+  }
+
+  applyColorblindMode();
+  applyHighContrastMode();
+  applyFontSize();
+  updateFontSizeSlider();
+
+  const colorblindTypeSelect = document.getElementById('colorblind-type');
+  if (colorblindTypeSelect) {
+      colorblindTypeSelect.value = colorblindType;
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const fontSizeRange = document.getElementById('font-size-range');
+  if (fontSizeRange) {
+      fontSizeRange.addEventListener('input', (e) => {
+          changeFontSize(parseInt(e.target.value));
+      });
+  }
+});
+
+window.onload = loadSettings;
+
+// Adicione os filtros SVG ao final do body
+document.body.insertAdjacentHTML('beforeend', `
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <defs>
+          <filter id="protanomaly-filter">
+              <feColorMatrix type="matrix" values="0.817,0.183,0,0,0 0.333,0.667,0,0,0 0,0.125,0.875,0,0 0,0,0,1,0"/>
+          </filter>
+          <filter id="deuteranomaly-filter">
+              <feColorMatrix type="matrix" values="0.8,0.2,0,0,0 0.258,0.742,0,0,0 0,0.142,0.858,0,0 0,0,0,1,0"/>
+          </filter>
+          <filter id="tritanomaly-filter">
+              <feColorMatrix type="matrix" values="0.967,0.033,0,0,0 0,0.733,0.267,0,0 0,0.183,0.817,0,0 0,0,0,1,0"/>
+          </filter>
+          <filter id="protanopia-filter">
+              <feColorMatrix type="matrix" values="0.567,0.433,0,0,0 0.558,0.442,0,0,0 0,0.242,0.758,0,0 0,0,0,1,0"/>
+          </filter>
+          <filter id="deuteranopia-filter">
+              <feColorMatrix type="matrix" values="0.625,0.375,0,0,0 0.7,0.3,0,0,0 0,0.3,0.7,0,0 0,0,0,1,0"/>
+          </filter>
+          <filter id="tritanopia-filter">
+              <feColorMatrix type="matrix" values="0.95,0.05,0,0,0 0,0.433,0.567,0,0 0,0.475,0.525,0,0 0,0,0,1,0"/>
+          </filter>
+          <filter id="achromatopsia-filter">
+              <feColorMatrix type="matrix" values="0.299,0.587,0.114,0,0 0.299,0.587,0.114,0,0 0.299,0.587,0.114,0,0 0,0,0,1,0"/>
+          </filter>
+          <filter id="achromatomaly-filter">
+              <feColorMatrix type="matrix" values="0.618,0.320,0.062,0,0 0.163,0.775,0.062,0,0 0.163,0.320,0.516,0,0 0,0,0,1,0"/>
+          </filter>
+      </defs>
+  </svg>
+`);
+  </script>
+  
+  <script>
+      const buttons = document.querySelectorAll('.accordion-button');
+  
+  buttons.forEach(button => {
+      button.addEventListener('click', function() {
+          const content = this.nextElementSibling;
+  
+          // Fecha todos os outros conteúdos
+          document.querySelectorAll('.accordion-content').forEach(item => {
+              if (item !== content) {
+                  item.style.display = 'none';
+              }
+          });
+  
+          // Alterna a exibição do conteúdo atual
+          content.style.display = content.style.display === 'block' ? 'none' : 'block';
+      });
+  });
+  </script>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+    <script>
+       function toggleTextBox() {
+        const textBoxContainer = document.getElementById('textBoxContainer');
+        const opcao7 = document.getElementById('opcao7');
+
+        if (opcao7.checked) {
+            textBoxContainer.style.display = 'block'; // Mostra a caixa de texto
+        } else {
+            textBoxContainer.style.display = 'none'; // Esconde a caixa de texto
+        }
+    }
+
+      const date = document.getElementById('date').value;
+      
+       function formatCPF(input) {
+        // Remove qualquer caractere que não seja um dígito
+        let value = input.value.replace(/\D/g, '');
+
+        // Adiciona a formatação
+        if (value.length > 9) {
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+        }
+        if (value.length > 6) {
+            value = value.replace(/(\d{3})(\d{3})(\d)/, '$1.$2.$3');
+        }
+        if (value.length > 3) {
+            value = value.replace(/(\d{3})(\d{2})$/, '$1-$2');
+        }
+
+        // Atualiza o valor do input
+        input.value = value;
+    }
+
+function formatPhone(input) {
+        // Remove qualquer caractere que não seja um dígito
+        let value = input.value.replace(/\D/g, '');
+
+        // Adiciona formatação
+        if (value.length > 2) {
+            value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+        }
+        if (value.length > 9) {
+            value = `${value.slice(0, 9)}-${value.slice(9, 13)}`;
+        }
+
+        // Atualiza o valor do input
+        input.value = value;
+    }
+
+      document.getElementById('curriculo-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+
+          const curriculoData = {
+              nome: document.getElementById('nome').value,
+              sobrenome: document.getElementById('sobrenome').value,
+              cpf: document.getElementById('cpf').value,
+              celular: document.getElementById('celular').value,
+              email: document.getElementById('email').value,
+              endereco: document.getElementById('endereco').value,
+              estado: document.getElementById('estado').value,
+          };
+
+          localStorage.setItem('curriculo', JSON.stringify(curriculoData));
+
+          alert('Currículo salvo com sucesso!');
+      });
+  </script>
+
+    <div class="container-6">
+      <h6>IncluWork</h6>
+      <div class="footer">
+          <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="cursos.html">Cursos</a></li>                
+              <li><a href="">Vagas</a></li>
+              <li><a href="">Sobre</a></li>                
+              <li><a href="login.html">Login</a></li>
+          </ul>
+      </div>
+      <div class="email"><p>incluwork@gmail.com <br> (11) 9523-4433</p></div>
+  </div>
+
+  <footer>
+  
+  </footer>
+    <script>
+    const languageContainer = document.querySelector('.language-container');
+    const languageOptions = document.querySelector('.language-options');
+    const selectedLanguage = document.querySelector('.selected-language');
+
+    languageContainer.addEventListener('click', () => {
+      languageOptions.style.display = languageOptions.style.display === 'none' ? 'block' : 'none';
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!languageContainer.contains(event.target)) {
+        languageOptions.style.display = 'none';
+      }
+    });
+
+    function selectLanguage(language) {
+      selectedLanguage.textContent = `Português, ${language}`;
+      languageOptions.style.display = 'none';
+    }
+  </script>
+    <script src="script.js"></script>
+</body>
+</html>

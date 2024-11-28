@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuário</title>
+    <link rel="icon" href="img/icontest.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2D2E47;
+            color: #ECF0F1;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .profile-header img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 10px;
+            border: 10px solid #fff;
+        }
+        h1 {
+            font-size: 1.7em;
+            margin: 0;
+            margin-bottom: 5px;
+        }
+        .email {
+            font-size: 1.2em;
+            color: #BDC3C7;
+            word-break: break-all;
+        }
+        .info {
+            margin: 10px 0;
+            width: 100%;
+            max-width: 600px;
+        }
+        .info label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .info span {
+            display: block;
+            padding: 10px;
+            background: rgba(173, 223, 208, 1);
+            color: #2C3E50;
+            border-radius: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border: none;
+            font-size: 16px;
+            height: 40px;
+            line-height: 20px;
+        }
+        .info span[contenteditable="true"] {
+            outline: none;
+        }
+        .dual-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+        }
+        .dual-info div {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .dual-info label {
+            font-size: 1.1em;
+        }
+        .button {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 600px;
+        }
+        .button a {
+            padding: 10px 15px;
+            background-color: #1ABC9C;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            margin: 5px;
+            text-align: center;
+            flex: 1 1 30%;
+        }
+        .button a:hover {
+            background-color: #16A085;
+        }
+        .error {
+            color: #E74C3C;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .dropdown {
+            background: #3E7996;
+            border-radius: 5px;
+            display: none;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        .dropdown div {
+            padding: 10px;
+            cursor: pointer;
+            color: #ECF0F1;
+        }
+        .dropdown div:hover {
+            background-color: #3E7996;
+        }
+        .dropdown::-webkit-scrollbar {
+            width: 10px;
+        }
+        .dropdown::-webkit-scrollbar-track {
+            background: #2D2E47;
+        }
+        .dropdown::-webkit-scrollbar-thumb {
+            background: white;
+            border-radius: 5px;
+        }
+        .dropdown::-webkit-scrollbar-thumb:hover {
+            background: #16A085;
+        }
+        @media (min-width: 768px) {
+            .dual-info div {
+                width: 48%;
+            }
+            .button {
+                justify-content: space-between;
+            }
+            .button a {
+                flex: 0 1 auto;
+            }
+        }
+
+        .hidden {
+  display: none;
+}
+
+.reader-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.speed-control {
+  margin-top: 10px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none; 
+  appearance: none; 
+  width: 80%; 
+  height: 15px; 
+  background: #F3FFF3; 
+  border-radius: 100px; 
+  outline: none; 
+  border: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  border: none;
+  -webkit-appearance: none; 
+  appearance: none; 
+  width: 15px; 
+  height: 15px; 
+  border-radius: 50%;
+  background: #2D3748; 
+  cursor: pointer; 
+}
+input[type="range"]::-moz-range-thumb {
+  border: none;
+  width: 15px; 
+  height: 8px; 
+  border-radius: 50%; 
+  background: #2D3748; 
+  cursor: pointer; 
+}
+
+#accessibility-menu {
+  position: fixed;
+  top: 275px;
+  left: 20px;
+  background-color: #ADDFD0;
+  padding: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000; 
+  border: none;
+}
+
+.accessibility-button {
+  position: fixed; 
+  right: 10px; 
+  top: 320px; 
+  z-index: 1000; 
+}
+
+.accessibility-button button {
+  background-color: #3185F0; 
+  color: white;
+  border: none; 
+  padding: 5.5px; 
+  border-radius: 10px; 
+  cursor: pointer; 
+  font-size: 1.8rem;
+}
+
+.botao button {
+  background-color: #F3FFF3; 
+  color: #2d3748; 
+  border: none; 
+  width: 290px;
+  padding: 10px;
+  border-radius: 10px; 
+  cursor: pointer;
+  font-size: 1.2rem; 
+  margin-top: 5px; 
+  transition: background-color 0.3s, transform 0.2s; 
+}
+
+select{
+  color: #2D3748; 
+  border: none; 
+  background-color: #F3FFF3; 
+  width: 290px;
+  padding: 10px;
+  border-radius: 10px; 
+  cursor: pointer;
+  font-size: 1.2rem; 
+  margin-top: 5px; 
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+body.high-contrast .info span{
+    background-color: #444;
+    color:#F3FFF3;
+}
+
+body.high-contrast .button a{
+    background-color: #222;
+}
+
+body.high-contrast select {
+  background-color: #444;
+  color: #fff;
+}
+
+body.high-contrast #accessibility-menu {
+  background-color: #1a202c;
+  color: #fff;
+}
+
+body.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Estilos para alto contraste */
+body.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+body.high-contrast ul li a {
+  color: #0ff; 
+  text-decoration: underline; 
+}
+
+body.high-contrast nav,
+body.high-contrast .nav-background,
+body.high-contrast header,
+body.high-contrast footer {
+  background-color: #222; /* Cor de fundo para barras de navegação e rodapé */
+  color: #fff;
+}
+
+body.high-contrast .container,
+body.high-contrast .container-1,
+body.high-contrast .container-3,
+body.high-contrast .container-5{
+  background-color: #222;
+  color: #fff;
+}
+
+body.high-contrast .container-2,
+body.high-contrast .container-4,
+body.high-contrast .container-6 {
+  background-color: #333;
+  color: #fff;
+}
+
+body.high-contrast button {
+  background-color: #444;
+  color: #fff;
+  border-color: #fff;
+}
+
+body.high-contrast button:hover {
+  background-color: #555;
+}
+
+body.high-contrast input{
+  background-color: #F3FFF3;
+}
+
+body.high-contrast textarea {
+  background-color: #222;
+  color: #fff;
+  border-color: #fff;
+}
+
+body.high-contrast .accordion-button {
+  background-color: #444;
+  color: #fff;
+}
+
+body.high-contrast .accordion-content {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Dots no carrossel */
+body.high-contrast .dot {
+  background-color: #fff;
+}
+
+body.high-contrast .dot.active {
+  background-color: #0ff;
+}
+
+/* Footer e texto */
+body.high-contrast p {
+  color: #ccc;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3 {
+  color: #fff;
+}
+
+nav.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+body.spaced-letters * {
+  letter-spacing: 1.5px;
+}
+
+body.underline-links a {
+  text-decoration: underline;
+}
+
+body.colorblind-mode img {
+  filter: grayscale(100%);
+}
+    </style>
+</head>
+<body>
+    <div class="profile-header">
+        <img src="img/perfil.jpg" alt="Foto de Perfil">
+        <h1 id="name-header"><p2 class="text-to-read">Sara Beatriz</p2></h1>
+        <span class="email" id="email-header"><p2 class="text-to-read">sara@gmail.com</p2></span>
+    </div>
+    <div class="info">
+        <label><p2 class="text-to-read">Nome completo:</p2></label>
+        <span id="full-name"><p2 class="text-to-read">Sara Beatriz</p2></span>
+    </div>
+    <div class="info dual-info">
+        <div>
+            <label><p2 class="text-to-read">Telefone:</p2></label>
+            <span id="phone"><p2 class="text-to-read">+55 (11) 99887-7665</p2></span>
+        </div>
+        <div>
+            <label><p2 class="text-to-read">Data de nascimento:</p2></label>
+            <span id="birth-date"><p2 class="text-to-read">14/12/2006</p2></span>
+        </div>
+    </div>
+    <div class="info dual-info">
+        <div>
+            <label><p2 class="text-to-read">Cidade:</p2></label>
+            <span id="city"><p2 class="text-to-read">Mauá</p2></span>
+        </div>
+        <div>
+            <label><p2 class="text-to-read">Estado:</p2></label>
+            <span id="state"><p2 class="text-to-read">SP</p2></span>
+        </div>
+    </div>
+    <div class="info dual-info">
+        <div>
+            <label><p2 class="text-to-read">Possui alguma deficiência?</p2></label>
+            <span id="disability"><p2 class="text-to-read">Não</p2></span>
+        </div>
+        <div>
+            <label><p2 class="text-to-read">Estado:</p2></label>
+            <span id="state2"><p2 class="text-to-read">SP</p2></span>
+        </div>
+    </div>
+    <div class="button">
+        <a href="#" id="edit-profile"><p2 class="text-to-read">Editar perfil</p2></a>
+        <a href="#"><p2 class="text-to-read">Log out</p2></a>
+        <a href="curriculo.html"><p2 class="text-to-read">Fazer currículo</p2></a>
+    </div>
+
+    <div class="accessibility-button">
+        <button id="accessibility-toggle">
+            <i class="fas fa-universal-access"></i>
+        </button>
+    </div>
+    <div id="accessibility-menu" class="hidden">
+        <div class="font-size-slider">
+            <span class="font-size-label small">A</span>
+            <input type="range" id="font-size-range" min="0" max="3" step="1" value="1" onchange="changeFontSize(this.value)">
+            <span class="font-size-label large">A</span>
+        </div> <br>
+        <div class="botao">
+            <button id="high-contrast-btn">Alto Contraste</button> <br>
+            <button onclick="toggleLetterSpacing()">Espaçamento de Letras</button> <br>
+            <button onclick="toggleUnderline()">Sublinhar Links</button> <br>
+            <select id="colorblind-type" onchange="changeColorblindType()">
+                <option value="normal">Adaptações para daltonismo</option>
+                <optgroup label="Formas Leves">
+                    <option value="protanomaly">Protanomalia (Vermelho fraco)</option>
+                    <option value="deuteranomaly">Deuteranomalia (Verde fraco)</option>
+                    <option value="tritanomaly">Tritanomalia (Azul fraco)</option>
+                </optgroup>
+                <optgroup label="Formas Severas">
+                    <option value="protanopia">Protanopia (Sem vermelho)</option>
+                    <option value="deuteranopia">Deuteranopia (Sem verde)</option>
+                    <option value="tritanopia">Tritanopia (Sem azul)</option>
+                </optgroup>
+                <optgroup label="Monocromacia">
+                    <option value="achromatomaly">Acromatomalia (Quase sem cores)</option>
+                    <option value="achromatopsia">Acromatopsia (Sem cores)</option>
+                </optgroup>
+            </select> <br>
+            <button onclick="startReading()">Iniciar Leitura</button> <br>
+            <button onclick="stopReading()">Parar Leitura</button> <br>
+            <div class="speed-control">
+                <label for="speed">Velocidade:</label> <br>
+                <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1">
+            </div>
+        </div>
+    </div>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script>
+
+let speech = new SpeechSynthesisUtterance();
+    const textElements = document.querySelectorAll('.text-to-read');
+    
+    function startReading() {
+        let fullText = Array.from(textElements).map(element => element.innerText).join(' ');
+        speech.text = fullText;
+        speech.rate = document.getElementById('speed').value;
+        window.speechSynthesis.speak(speech);
+    }
+
+    function stopReading() {
+        window.speechSynthesis.cancel();
+    }
+
+    document.getElementById('speed').addEventListener('input', function() {
+        speech.rate = this.value;
+    });
+
+function applyFontSize() {
+    const sizes = ['14px', '16px', '18px', '20px'];
+    const elements = document.querySelectorAll(
+        'a, button, h2, h3, h1, .accordion-button, .accordion-content'
+    );
+
+    elements.forEach((element) => {
+        element.style.fontSize = sizes[fontSize];
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const fontSizeRange = document.getElementById('font-size-range');
+    fontSizeRange.addEventListener('input', (e) => {
+        fontSize = parseInt(e.target.value);
+        applyFontSize();
+    });
+
+    // Aplicar configurações ao carregar a página
+    loadSettings();
+});
+
+
+function toggleLetterSpacing() {
+    document.body.style.letterSpacing = document.body.style.letterSpacing === '2px' ? 'normal' : '2px';
+}
+
+function toggleHighContrast() {
+    document.body.classList.toggle('high-contrast');
+}
+
+function toggleAccessibilityMenu() {
+    const menu = document.getElementById('accessibility-menu');
+    menu.classList.toggle('hidden');
+}
+
+function handleSearch() {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    console.log('Consulta:', query); 
+    // lógica de pesquisa...
+}
+
+function toggleUnderline() {
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+        link.style.textDecoration = link.style.textDecoration === 'underline' ? 'none' : 'underline';
+    });
+}
+    
+         // accessibility.js
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButton = document.getElementById('accessibility-toggle');
+        const accessibilityMenu = document.getElementById('accessibility-menu');
+
+        toggleButton.addEventListener('click', function() {
+            // Alterna a classe 'hidden' para exibir ou ocultar o menu
+            accessibilityMenu.classList.toggle('hidden');
+        });
+    });
+
+// Selecionar o botão de alto contraste
+const highContrastToggle = document.getElementById('high-contrast-btn');
+
+// Alternar o modo de alto contraste
+highContrastToggle.addEventListener('click', () => {
+  document.body.classList.toggle('high-contrast');
+});
+
+let colorblindMode = false;
+let highContrastMode = false;
+let fontSize = 1; // 0 = pequeno, 1 = médio, 2 = grande
+let colorblindType = 'normal';
+
+function toggleColorblindMode() {
+    colorblindMode = !colorblindMode;
+    localStorage.setItem('colorblindMode', colorblindMode);
+    applyColorblindMode();
+}
+
+function toggleHighContrastMode() {
+    highContrastMode = !highContrastMode;
+    localStorage.setItem('highContrastMode', highContrastMode);
+    applyHighContrastMode();
+}
+
+function changeFontSize(size) {
+    fontSize = size;
+    localStorage.setItem('fontSize', fontSize);
+    applyFontSize();
+    updateFontSizeSlider();
+}
+
+function changeColorblindType() {
+    const select = document.getElementById('colorblind-type');
+    colorblindType = select.value;
+    localStorage.setItem('colorblindType', colorblindType);
+    applyColorblindMode();
+}
+
+function applyColorblindMode() {
+    const filters = {
+        normal: 'none',
+        protanomaly: 'url("#protanomaly-filter")',
+        deuteranomaly: 'url("#deuteranomaly-filter")',
+        tritanomaly: 'url("#tritanomaly-filter")',
+        protanopia: 'url("#protanopia-filter")',
+        deuteranopia: 'url("#deuteranopia-filter")',
+        tritanopia: 'url("#tritanopia-filter")',
+        achromatopsia: 'url("#achromatopsia-filter")',
+        achromatomaly: 'url("#achromatomaly-filter")'
+    };
+
+    document.body.style.filter = filters[colorblindType];
+}
+
+function applyHighContrastMode() {
+    if (highContrastMode) {
+        document.body.classList.add('high-contrast');
+    } else {
+        document.body.classList.remove('high-contrast');
+    }
+}
+
+function applyFontSize() {
+    const sizes = ['14px', '16px', '18px'];
+    document.body.style.fontSize = sizes[fontSize];
+}
+
+function updateFontSizeSlider() {
+    const fontSizeRange = document.getElementById('font-size-range');
+    if (fontSizeRange) {
+        fontSizeRange.value = fontSize;
+    }
+}
+
+function loadSettings() {
+    colorblindMode = localStorage.getItem('colorblindMode') === 'true';
+    highContrastMode = localStorage.getItem('highContrastMode') === 'true';
+    fontSize = parseInt(localStorage.getItem('fontSize'));
+    colorblindType = localStorage.getItem('colorblindType') || 'normal';
+    
+    if (isNaN(fontSize) || fontSize < 0 || fontSize > 2) {
+        fontSize = 1;
+    }
+
+    applyColorblindMode();
+    applyHighContrastMode();
+    applyFontSize();
+    updateFontSizeSlider();
+
+    const colorblindTypeSelect = document.getElementById('colorblind-type');
+    if (colorblindTypeSelect) {
+        colorblindTypeSelect.value = colorblindType;
+    }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const fontSizeRange = document.getElementById('font-size-range');
+    if (fontSizeRange) {
+        fontSizeRange.addEventListener('input', (e) => {
+            changeFontSize(parseInt(e.target.value));
+        });
+    }
+});
+
+window.onload = loadSettings;
+
+// Adicione os filtros SVG ao final do body
+document.body.insertAdjacentHTML('beforeend', `
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <defs>
+            <filter id="protanomaly-filter">
+                <feColorMatrix type="matrix" values="0.817,0.183,0,0,0 0.333,0.667,0,0,0 0,0.125,0.875,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="deuteranomaly-filter">
+                <feColorMatrix type="matrix" values="0.8,0.2,0,0,0 0.258,0.742,0,0,0 0,0.142,0.858,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="tritanomaly-filter">
+                <feColorMatrix type="matrix" values="0.967,0.033,0,0,0 0,0.733,0.267,0,0 0,0.183,0.817,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="protanopia-filter">
+                <feColorMatrix type="matrix" values="0.567,0.433,0,0,0 0.558,0.442,0,0,0 0,0.242,0.758,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="deuteranopia-filter">
+                <feColorMatrix type="matrix" values="0.625,0.375,0,0,0 0.7,0.3,0,0,0 0,0.3,0.7,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="tritanopia-filter">
+                <feColorMatrix type="matrix" values="0.95,0.05,0,0,0 0,0.433,0.567,0,0 0,0.475,0.525,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="achromatopsia-filter">
+                <feColorMatrix type="matrix" values="0.299,0.587,0.114,0,0 0.299,0.587,0.114,0,0 0.299,0.587,0.114,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="achromatomaly-filter">
+                <feColorMatrix type="matrix" values="0.618,0.320,0.062,0,0 0.163,0.775,0.062,0,0 0.163,0.320,0.516,0,0 0,0,0,1,0"/>
+            </filter>
+        </defs>
+    </svg>
+`);
+    </script>
+    
+    <script>
+        const buttons = document.querySelectorAll('.accordion-button');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+    
+            // Fecha todos os outros conteúdos
+            document.querySelectorAll('.accordion-content').forEach(item => {
+                if (item !== content) {
+                    item.style.display = 'none';
+                }
+            });
+    
+            // Alterna a exibição do conteúdo atual
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+    </script>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+</body>
+</html><script>
+    // Função para carregar os dados do usuário
+    function loadUserProfile() {
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const currentUser = users[users.length - 1]; // Último usuário cadastrado
+
+        if (currentUser) {
+            document.getElementById('profile-photo').src = currentUser.photo || 'img/default-photo.png';
+            document.getElementById('name-header').textContent = currentUser.name;
+            document.getElementById('email-header').textContent = currentUser.email;
+            document.getElementById('full-name').textContent = currentUser.name;
+            document.getElementById('birth-date').textContent = currentUser.date;
+            document.getElementById('disability').textContent = currentUser.deficiencia || 'Nenhuma';
+        } else {
+            alert('Nenhum usuário logado!');
+            window.location.href = 'cadastro.html'; // Redireciona para a página de cadastro
+        }
+    }
+
+    // Chamar a função ao carregar a página
+    loadUserProfile();
+</script>
+</body>

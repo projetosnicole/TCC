@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro e Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="logo">
+                <div class="logo-placeholder">Logo</div>
+            </div>
+            <div class="form">
+                <h2>Cadastre-se</h2>
+                <form>
+                    <label for="name">Nome completo</label>
+                    <input type="text" id="name" name="name">
+                    
+                    <label for="date">Data de nascimento</label>
+                    <input type="date" id="date" name="date">
+
+                    <label for="preferences">Alguma preferência?</label>
+                    <select id="preferences" name="preferences">
+                        <option value="none">Não</option>
+                        <option value="yes">Sim</option>
+                    </select>
+
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email">
+
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password">
+
+                    <button type="submit">Entrar</button>
+                </form>
+                <button class="google-login">Continuar com G</button>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>

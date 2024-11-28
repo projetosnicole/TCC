@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos</title>
+    <link rel="icon" href="img/icontest.png" type="image/x-icon">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body{
+          background-color: #3E7996;
+          position: relative;
+        }
+          
+        nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: left;
+          margin-top: 1%;
+        }
+        
+        .nav-list {
+          list-style: none;
+          padding: 30px;
+          padding-right: 30%;
+          padding-left: 30%;
+          margin: 0;
+          display: flex;
+          justify-content: space-around; 
+          position: fixed; 
+          top: 0;
+          width: 40%;
+          background-color: transparent; 
+          transition: background-color 0.3s ease; 
+          z-index: 1000; 
+        }
+        
+        @media screen and (max-width: 1440px){
+          .nav-list{
+            padding-left: 27%;
+            padding-right: 33%;
+          }
+        }
+        
+        @media screen and (max-width: 1280px){
+          .nav-list{
+            padding: 25px;
+            padding-left: 22%;
+            padding-right: 40%;
+          }
+        }
+          
+        .nav-background {
+          background-color: #4BA0A3;
+        }
+          
+        @media (max-width: 1044px){
+          .nav-background{
+            background-color: transparent;
+          }
+        }
+          
+        .logo {
+          color: #3E7996;
+          font-size: 1.4rem;
+        }
+        
+        .nav-list ul {
+          font-size: 1.5rem;
+          display: flex;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+            
+        }
+        
+        .nav-list ul li {
+          margin: 0 45px;
+        }
+        
+        .nav-list ul li a {
+          color: white;
+          text-decoration: none;
+        }
+          
+        .menu-icon {
+          font-size: 24px;
+          color: #F3FFF3;
+          cursor: pointer;
+          position: fixed;
+          top: 20px;
+          left: 20px;
+          z-index: 1000;
+          display: none; 
+        }
+        
+        .sidebar {
+          height: 100%;
+          width: 250px;
+          position: fixed;
+          top: 0;
+          left: -250px; 
+          background-color: #F3FFF3;
+          transition: left 0.3s;
+          padding-top: 60px;
+          z-index: 999;
+        }
+        
+        .sidebar.active {
+          left: 0;
+        }
+        
+        .sidebar ul {
+          list-style: none;
+          padding: 0;
+        }
+        
+        .sidebar ul li {
+          margin: 20px 0;
+          text-align: center;
+        }
+        
+        .sidebar ul li a {
+          color: #4BA0A3;
+          text-decoration: none;
+          font-size: 18px;
+        }
+        
+        .sidebar ul li a:hover {
+          text-decoration: underline;
+        }
+        
+        @media (max-width: 1044px) {
+          .menu-icon {
+            display: block; 
+            z-index: 1000;
+          }
+        
+          .nav-list {
+            display: none; 
+          }
+        }
+        
+        header{
+          float: left;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+        }
+        
+        h4{
+          text-align: center;
+          font-size: 3em;
+          color: #2D2E47;
+        }
+        
+        @media screen and (max-width: 860px){
+          h4{
+            font-size: 1.3em;
+          }
+        }
+        
+        .container-6{
+          max-width: 1920%;
+          height: 380%;
+          padding: 2% 1%;
+          background-color: #ADDFD0;
+        }
+        
+        .footer{
+          font-size: 1.3rem;
+          list-style: none;
+          text-align: center;
+          margin-top: 2%;
+        }
+        
+        @media screen and (max-width: 860px){
+          .footer{
+            font-size: 0.8rem;
+          }
+        }
+        
+        .footer li{
+          display: inline;
+        }
+        
+        .footer ul li a{
+          color: #1F99A5;
+          margin-left: 1.5%;
+          text-decoration: none;
+        }
+        
+        .email p{
+          margin-top: 2%;
+          color: #3E7996;
+          font-size: 1.2rem;
+        }
+        
+        @media screen and (max-width: 860px){
+          .email p{
+            font-size: 0.8rem;
+          }
+        }
+        
+        footer{
+          background-color: #2D2F48;
+          height: 30px;
+        }
+        
+        h1{
+          text-align:center;
+          margin-left: 15%;
+          margin-right: 15%;
+          line-height: 1.8;
+          font-size: clamp(1.3rem, 3vw + 1.3rem, 10rem);
+          color: #F0FFF0;
+          margin-top: 15%;
+          margin-bottom: 5%;
+        }
+        
+        input {
+          width: 55%;
+          background-color: #2D2F48;
+          padding: 0.6% 2% 0.6% 2%;
+          border-radius: 50px;
+          margin-left: 22%;
+          font-size: 1.8em;
+          margin-top: 0%;
+          border: none;
+          box-sizing: border-box;
+          margin-bottom: 15%;
+        }
+        
+        .form-control{
+          color: white;
+        }
+        
+        ::placeholder{
+          color: white;
+          font-size: 1.5rem;
+        }
+        
+        .container-1{
+          max-width: 1024%;
+          height: 280%;
+          background-color: #ADDFD0;
+          padding: 3% 3%;
+        }
+        
+        .button-row {
+          display: flex;          
+          flex-wrap: wrap;         
+          justify-content: center; 
+          gap: 30px; 
+          margin-left: 15%;
+          margin-right: 15%;
+          margin-top: 3%;              
+        }
+        
+        .button-row button {
+          flex: 0 1 calc(430px - 50px); 
+          margin-top: 1%;
+          padding: 15px;
+          font-size: 16px;
+          cursor: pointer;
+          border: none;
+          background-color: #F5F5F5;
+          color: #73B5B7;
+          border-radius: 30px;
+          transition: background-color 0.3s ease;
+        }
+        
+        h2{
+          text-align: center;
+          font-size: 3rem;
+          color: #3E7996;
+        }
+        
+        @media screen and (max-width: 999px){
+          h2{
+            font-size: 2rem;
+          }
+        }
+        
+        @media screen and (max-width: 599px){
+          h2{
+            font-size: 1.4rem;
+          }
+        }
+        
+        p{
+          text-align: center;
+        }
+        
+        .container-2{
+          max-width: 1024%;
+          height: 280%;
+          background-color: #73B5B7;
+          padding: 5% 5%;
+          text-align: center;
+        }
+        
+        .container-3{
+          max-width: 1024%;
+          height: 280%;
+          background-color: #4BA0A3;
+          padding: 5% 5%;
+          text-align: center;
+        }
+        
+        .container-4{
+          max-width: 1024%;
+          height: 280%;
+          background-color: #3E7996;
+          padding: 5% 5%;
+          text-align: center;
+        }
+        
+        .container-5{
+          max-width: 1024%;
+          height: 280%;
+          background-color: #3B5A6A;
+          padding: 5% 5%;
+          text-align: center;
+        }
+        
+        .caixa {
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          padding: 2%;
+          width: 25%;
+          margin: auto;
+          margin: 0 25px;
+          display: inline-block;
+          transition: all 0.5s ease-in-out;
+        }
+        
+        @media screen and (max-width: 1366px){
+          .caixa{
+            width: 23%;
+            margin-bottom: 4%;
+            margin-left: 2%;
+          }
+        }
+        
+        @media screen and (max-width: 999px){
+            .container-2, .container-3, .container-4, .container-5{
+                justify-items: center;
+            }
+        }
+        
+        @media screen and (max-width: 999px){
+          .caixa{
+            display: block;
+            width: 70%;
+            margin-bottom: 4%;
+            margin-left: 5%;
+          }
+        }
+        
+        .titulo {
+          display: flex;
+          align-items: center;
+        }
+        
+        .icone {
+          background-color: #C4E0E1; 
+          border-radius: 50%;
+          padding: 4%;
+          display: inline-flex;
+          margin-bottom: 4%;
+          margin-right: 2%; 
+        }
+        
+        @media screen and (max-width: 1600px){
+          .icone{
+            margin-right: 1.3%;
+          }
+        }
+        
+        @media screen and (max-width: 1280px){
+          .icone{
+            margin-right: 0%;
+          }
+        }
+        
+        .titulo h2 {
+          margin: 1%;
+          margin-bottom: 6%;
+          font-size: 2rem;
+        }
+        
+        @media (max-width: 1440px){
+          .titulo h2{
+            font-size: 1.3rem;
+          }
+        }
+        
+        button.botao {
+          background-color: #4BA0A3;
+          color: #fff;
+          border: none;
+          padding: 2.5% 10%;
+          border-radius: 20px;
+          position: static;
+          cursor: pointer;
+          margin-top: 15px;
+          text-align: center;
+          align-items: center;
+        }
+        
+        .barra {
+          align-items: center; 
+          text-align: center;
+          width: 80%; 
+          height: 1px; 
+          background-color: transparent; 
+          margin: 20px 0;
+        }
+        
+        .linha {
+          align-items: center;
+          height: 1px; 
+          background-color: #4BA0A3; 
+          width: 80%; 
+          margin-left: 23%;
+          top: 50%; 
+          left: 0;
+          text-align: center;
+        }
+        
+        h6, h5{
+          text-align: center;
+          display: inline-block;
+          margin: 0 15px;
+          margin-bottom: 1%;
+        }
+
+        .hidden {
+          opacity: 0;
+          transform: scale(0.8);
+          pointer-events: none;
+        }
+
+        .hidden {
+  display: none;
+}
+
+.reader-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.speed-control {
+  margin-top: 10px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none; 
+  appearance: none; 
+  width: 80%;  
+  background: #F3FFF3; 
+  border-radius: 100px; 
+  outline: none; 
+  border: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  border: none;
+  -webkit-appearance: none; 
+  appearance: none; 
+  width: 15px; 
+  height: 15px; 
+  border-radius: 50%;
+  background: #2D3748; 
+  cursor: pointer; 
+}
+input[type="range"]::-moz-range-thumb {
+  border: none;
+  width: 15px; 
+  height: 8px; 
+  border-radius: 50%; 
+  background: #2D3748; 
+  cursor: pointer; 
+}
+
+#accessibility-menu {
+  position: fixed;
+  top: 275px;
+  left: 20px;
+  background-color: #ADDFD0;
+  padding: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000; 
+  border: none;
+}
+
+.accessibility-button {
+  position: fixed; 
+  right: 10px; 
+  top: 320px; 
+  z-index: 1000; 
+}
+
+.accessibility-button button {
+  background-color: #3185F0; 
+  color: white;
+  border: none; 
+  padding: 5.5px; 
+  border-radius: 10px; 
+  cursor: pointer; 
+  font-size: 1.8rem;
+}
+
+.botao button {
+  background-color: #F3FFF3; 
+  color: #2d3748; 
+  border: none; 
+  width: 290px;
+  padding: 10px;
+  border-radius: 10px; 
+  cursor: pointer;
+  font-size: 1.2rem; 
+  margin-top: 5px; 
+  transition: background-color 0.3s, transform 0.2s; 
+}
+
+select{
+  color: #2D3748; 
+  border: none; 
+  background-color: #F3FFF3; 
+  width: 290px;
+  padding: 10px;
+  border-radius: 10px; 
+  cursor: pointer;
+  font-size: 1.2rem; 
+  margin-top: 5px; 
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+body.high-contrast select {
+  background-color: #444;
+  color: #fff;
+}
+
+body.high-contrast #accessibility-menu {
+  background-color: #1a202c;
+  color: #fff;
+}
+
+body.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Estilos para alto contraste */
+body.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+body.high-contrast ul li a {
+  color: #0ff; 
+  text-decoration: underline; 
+}
+
+body.high-contrast nav,
+body.high-contrast .nav-background,
+body.high-contrast header,
+body.high-contrast footer {
+  background-color: #222; /* Cor de fundo para barras de navegação e rodapé */
+  color: #fff;
+}
+
+body.high-contrast .container,
+body.high-contrast .container-1,
+body.high-contrast .container-3,
+body.high-contrast .container-5{
+  background-color: #222;
+  color: #fff;
+}
+
+body.high-contrast .container-2,
+body.high-contrast .container-4,
+body.high-contrast .container-6 {
+  background-color: #333;
+  color: #fff;
+}
+
+body.high-contrast button {
+  background-color: #444;
+  color: #fff;
+  border-color: #fff;
+}
+
+body.high-contrast button:hover {
+  background-color: #555;
+}
+
+body.high-contrast textarea {
+  background-color: #222;
+  color: #fff;
+  border-color: #fff;
+}
+
+body.high-contrast .accordion-button {
+  background-color: #444;
+  color: #fff;
+}
+
+body.high-contrast .accordion-content {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Dots no carrossel */
+body.high-contrast .dot {
+  background-color: #fff;
+}
+
+body.high-contrast .dot.active {
+  background-color: #0ff;
+}
+
+/* Footer e texto */
+body.high-contrast p {
+  color: #1a202c;
+}
+
+body.high-contrast h1{
+  color: fff;
+}
+
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast h4,
+body.high-contrast h5,
+body.high-contrast h6{
+  color: #000;
+}
+
+nav.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+body.spaced-letters * {
+  letter-spacing: 1.5px;
+}
+
+body.underline-links a {
+  text-decoration: underline;
+}
+
+body.colorblind-mode img {
+  filter: grayscale(100%);
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="sidebar" id="sidebar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="vagas.html">Vagas</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-list">
+            <ul >
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cursos.html">Cursos</a></li>                
+                <li><a href="vagas.html">Vagas</a></li>
+                <li><a href="sobre.html">Sobre</a></li>                
+                <li><a href="login.html">Login</a></li>
+            </ul>
+            </div>
+
+            <div class="menu-icon" onclick="toggleMenu()">
+                &#9776;
+            </div>
+        </nav>
+    </header>
+
+    <div class="accessibility-button">
+      <button id="accessibility-toggle">
+          <i class="fas fa-universal-access"></i>
+      </button>
+  </div>
+  <div id="accessibility-menu" class="hidden">
+      <div class="font-size-slider">
+          <span class="font-size-label small">A</span>
+          <span class="font-size-label large">A</span>
+          <input type="range" id="font-size-range" min="0" max="3" step="1" value="1" onchange="changeFontSize(this.value)" style="margin: 0;">
+      </div> <br>
+      <div class="botao">
+          <button id="high-contrast-btn">Alto Contraste</button> <br>
+          <button onclick="toggleLetterSpacing()">Espaçamento de Letras</button> <br>
+          <button onclick="toggleUnderline()">Sublinhar Links</button> <br>
+          <select id="colorblind-type" onchange="changeColorblindType()">
+              <option value="normal">Adaptações para daltonismo</option>
+              <optgroup label="Formas Leves">
+                  <option value="protanomaly">Protanomalia (Vermelho fraco)</option>
+                  <option value="deuteranomaly">Deuteranomalia (Verde fraco)</option>
+                  <option value="tritanomaly">Tritanomalia (Azul fraco)</option>
+              </optgroup>
+              <optgroup label="Formas Severas">
+                  <option value="protanopia">Protanopia (Sem vermelho)</option>
+                  <option value="deuteranopia">Deuteranopia (Sem verde)</option>
+                  <option value="tritanopia">Tritanopia (Sem azul)</option>
+              </optgroup>
+              <optgroup label="Monocromacia">
+                  <option value="achromatomaly">Acromatomalia (Quase sem cores)</option>
+                  <option value="achromatopsia">Acromatopsia (Sem cores)</option>
+              </optgroup>
+          </select> <br>
+          <button onclick="startReading()">Iniciar Leitura</button> <br>
+          <button onclick="stopReading()">Parar Leitura</button> <br>
+          <div class="speed-control">
+              <label for="speed">Velocidade:</label> <br> <br>
+              <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1" style="margin: 0;">
+          </div>
+      </div>
+  </div>
+
+    <div class="container-7">
+        <h1 class="text-to-read">Conheça alguns dos<br> nossos cursos</h1>
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Pesquisar curso de interesse" aria-label="Search">
+              </form>
+    </div>
+
+   
+    <div class="container-2">
+      <div class="caixa entrevista">
+        <div class="titulo">
+            <div class="icone">
+                <i class="fas fa-comment-dots" style="color: white;"></i> 
+            </div>
+            <h2 class="text-to-read">Currículo: por onde começar?</h2>
+        </div>
+        <p class="text-to-read">Está entrando agora no mercado de trabalho e não faz a menor ideia de como organizar um currículo?</p>
+        <div class="barra">
+          <div class="linha"></div>
+        </div>
+        <h6 class="text-to-read">Duração <br> 1h</h6>
+        <h5 class="text-to-read">Nível <br> Iniciante</h5> <br>
+        <a target="_blank" href="https://inspiraja.org.br/play/curso/68642849"><button class="botao">Iniciar</button></a>
+      </div>
+      <div class="caixa desenvolvimento">
+        <div class="titulo">
+            <div class="icone">
+                <i class="fas fa-comment-dots" style="color: white;"></i> 
+            </div>
+            <h2 class="text-to-read">Gestão de tempo</h2>
+        </div>
+        <p class="text-to-read">Você também sente dificuldades em organizar suas atividades? Sente que está o tempo todo correndo...</p>
+        <div class="barra">
+          <div class="linha"></div>
+        </div>
+        <h6 class="text-to-read">Duração <br> 50m</h6>
+        <h5 class="text-to-read">Nível <br> Iniciante</h5> <br>
+        <a target="_blank" href="https://inspiraja.org.br/play/curso/98345079"><button class="botao">Iniciar</button></a>
+      </div>
+      <div class="caixa desenvolvimento">
+        <div class="titulo">
+            <div class="icone">
+                <i class="fas fa-comment-dots" style="color: white;"></i> 
+            </div>
+            <h2 class="text-to-read">Autoconhecimento</h2>
+        </div>
+        <p class="text-to-read">Você sabia que muitas vezes a gente acha que sabe quem somos, mas na verdade não sabemos?</p>
+        <div class="barra">
+          <div class="linha"></div>
+        </div>
+        <h6 class="text-to-read">Duração <br> 1h</h6>
+        <h5 class="text-to-read">Nível <br> Iniciante</h5> <br>
+        <a target="_blank" href="https://inspiraja.org.br/play/curso/88279630"><button class="botao">Iniciar</button></a>
+      </div>
+    </div>
+
+    <div class="container-3">
+      <div class="caixa tecnologia">
+        <div class="titulo">
+            <div class="icone">
+                <i class="fas fa-comment-dots" style="color: white;"></i> 
+            </div>
+            <h2 class="text-to-read">Pitch: o que é e como fazer</h2>
+        </div>
+        <p class="text-to-read">Uma apresentação rápida e objetiva que te dá a chance de mostrar quem você é. </p>
+        <div class="barra">
+          <div class="linha"></div>
+        </div>
+        <h6 class="text-to-read">Duração <br> 3h</h6>
+        <h5 class="text-to-read">Nível <br> Iniciante</h5> <br>
+        <a target="_blank" href="https://inspiraja.org.br/play/curso/42517096"><button class="botao">Iniciar</button></a>
+      </div>
+      <div class="caixa conhecimento">
+        <div class="titulo">
+            <div class="icone">
+                <i class="fas fa-comment-dots" style="color: white;"></i> 
+            </div>
+            <h2 class="text-to-read">Marcha no futuro</h2>
+        </div>
+        <p class="text-to-read">Acompanhar a evolução do mercado para construir uma carreira de sucesso é um dos principais pontos.</p>
+        <div class="barra">
+          <div class="linha"></div>
+        </div>
+        <h6 class="text-to-read">Duração <br> 1h</h6>
+        <h5 class="text-to-read">Nível <br> Iniciante</h5> <br>
+        <a target="_blank" href="https://inspiraja.org.br/play/curso/31593487"><button class="botao">Iniciar</button></a>
+      </div>
+      <div class="caixa conhecimento">
+        <div class="titulo">
+            <div class="icone">
+                <i class="fas fa-comment-dots" style="color: white;"></i> 
+            </div>
+            <h2 class="text-to-read">Seja uma grande líder</h2>
+        </div>
+        <p class="text-to-read">Iremos te ajudar a reconhecer que você pode sim ser uma grande líder e ser a inspiração da sua história. </p>
+        <div class="barra">
+          <div class="linha"></div>
+        </div>
+        <h6 class="text-to-read">Duração <br> 3h</h6>
+        <h5 class="text-to-read">Nível <br> Iniciante</h5> <br>
+        <a target="_blank" href="https://inspiraja.org.br/play/curso/70907180"><button class="botao">Iniciar</button></a>
+      </div>
+    </div>
+
+    <div class="container-4">
+      <div class="caixa conhecimento">
+        <div class="titulo">
+            <div class="icone">
+                <i class="fas fa-comment-dots" style="color: white;"></i> 
+            </div>
+            <h2 class="text-to-read">O que a escola não te ensinou</h2>
+        </div>
+        <p class="text-to-read">O mercado de trabalho está passando por grandes mudanças, é necessário entede-las para se adaptar.</p>
+        <div class="barra">
+          <div class="linha"></div>
+        </div>
+        <h6 class="text-to-read">Duração <br>2h 25m</h6>
+        <h5 class="text-to-read">Nível <br> Iniciante</h5> <br>
+        <a target="_blank" href="https://inspiraja.org.br/play/curso/95113756"><button class="botao">Iniciar</button></a>
+      </div>
+      <div class="caixa entrevista">
+        <div class="titulo">
+            <div class="icone">
+                <i class="fas fa-comment-dots" style="color: white;"></i> 
+            </div>
+            <h2 class="text-to-read">Como construir um futuro</h2>
+        </div>
+        <p class="text-to-read">Aquele momento que o caminho parece estar perdido, precisamos dar uma pausa e alinhar o nosso propósito.</p>
+        <div class="barra">
+          <div class="linha"></div>
+        </div>
+        <h6 class="text-to-read">Duração <br> 1h</h6>
+        <h5 class="text-to-read">Nível <br> Iniciante</h5> <br>
+        <a target="_blank" href="https://inspiraja.org.br/play/curso/94846121"><button class="botao">Iniciar</button></a>
+      </div>
+      <div class="caixa tecnologia">
+        <div class="titulo">
+            <div class="icone">
+                <i class="fas fa-comment-dots" style="color: white;"></i> 
+            </div>
+            <h2 class="text-to-read">Steam</h2>
+        </div>
+        <p class="text-to-read">Veja os fundamentos e as oportunidades tanto na área de ciência e tecnologia quanto na área de arte e design.</p>
+        <div class="barra">
+          <div class="linha"></div>
+        </div>
+        <h6 class="text-to-read">Duração <br>1h 30m</h6>
+        <h5 class="text-to-read">Nível <br> Iniciante</h5> <br>
+        <a target="_blank" href="https://inspiraja.org.br/play/curso/44915062"><button class="botao">Iniciar</button></a>
+      </div>
+    </div>
+
+    <div class="container-5">
+      <div class="caixa desenvolvimento">
+        <div class="titulo">
+            <div class="icone">
+                <i class="fas fa-comment-dots" style="color: white;"></i> 
+            </div>
+            <h2 class="text-to-read">Como falar em público</h2>
+        </div>
+        <p class="text-to-read">Aprenda a dominar a arte de falar em público e transforme sua insegurança em confiança com técnicas.</p>
+        <div class="barra">
+          <div class="linha"></div>
+        </div>
+        <h6 class="text-to-read">Duração <br> 1h</h6>
+        <h5 class="text-to-read">Nível <br> Iniciante</h5> <br>
+        <a target="_blank" href="https://inspiraja.org.br/play/curso/68642849"><button class="botao">Iniciar</button></a>
+      </div>
+      <div class="caixa desenvolvimento">
+        <div class="titulo">
+            <div class="icone">
+                <i class="fas fa-comment-dots" style="color: white;"></i> 
+            </div>
+            <h2 class="text-to-read">Inteligência Emocional</h2>
+        </div>
+        <p class="text-to-read">Desenvolva sua inteligência emocional para melhorar relacionamentos e lidar com desafios com equilíbrio.</p>
+        <div class="barra">
+          <div class="linha"></div>
+        </div>
+        <h6 class="text-to-read">Duração <br>2h 45m</h6>
+        <h5 class="text-to-read">Nível <br> Iniciante</h5> <br>
+        <a target="_blank" href="https://inspiraja.org.br/play/curso/68642849"><button class="botao">Iniciar</button></a>
+      </div>
+      <div class="caixa entrevista">
+        <div class="titulo">
+            <div class="icone">
+                <i class="fas fa-comment-dots" style="color: white;"></i> 
+            </div>
+            <h2 class="text-to-read">Como conseguir um emprego</h2>
+        </div>
+        <p class="text-to-read">Descubra estratégias eficazes para se destacar no mercado de trabalho e a preparação para entrevistas.</p>
+        <div class="barra">
+          <div class="linha"></div>
+        </div>
+        <h6 class="text-to-read">Duração <br>2h 05m</h6>
+        <h5 class="text-to-read">Nível <br> Iniciante</h5> <br>
+        <a target="_blank" href="https://inspiraja.org.br/play/curso/68642849"><button class="botao">Iniciar</button></a>
+      </div>
+    </div>
+
+    <div class="container-6">
+        <h4 >IncluWork</h4>
+        <div class="footer">
+            <ul >
+                <li><a href="">Home</a></li>
+                <li><a href="">Cursos</a></li>                
+                <li><a href="">Vagas</a></li>
+                <li><a href="">Sobre</a></li>                
+                <li><a href="">Login</a></li>
+            </ul>
+        </div>
+        <div class="email"><p>incluwork@gmail.com <br> (11) 9523-4433</p></div>
+    </div>
+
+    <footer></footer>
+
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+  </div>
+
+  <script>
+
+let speech = new SpeechSynthesisUtterance();
+  const textElements = document.querySelectorAll('.text-to-read');
+  
+  function startReading() {
+      let fullText = Array.from(textElements).map(element => element.innerText).join(' ');
+      speech.text = fullText;
+      speech.rate = document.getElementById('speed').value;
+      window.speechSynthesis.speak(speech);
+  }
+
+  function stopReading() {
+      window.speechSynthesis.cancel();
+  }
+
+  document.getElementById('speed').addEventListener('input', function() {
+      speech.rate = this.value;
+  });
+
+function applyFontSize() {
+  const sizes = ['14px', '16px', '18px', '20px'];
+  const elements = document.querySelectorAll(
+      'a, button, h2, h3, h1, .accordion-button, .accordion-content'
+  );
+
+  elements.forEach((element) => {
+      element.style.fontSize = sizes[fontSize];
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const fontSizeRange = document.getElementById('font-size-range');
+  fontSizeRange.addEventListener('input', (e) => {
+      fontSize = parseInt(e.target.value);
+      applyFontSize();
+  });
+
+  // Aplicar configurações ao carregar a página
+  loadSettings();
+});
+
+
+function toggleLetterSpacing() {
+  document.body.style.letterSpacing = document.body.style.letterSpacing === '2px' ? 'normal' : '2px';
+}
+
+function toggleHighContrast() {
+  document.body.classList.toggle('high-contrast');
+}
+
+function toggleAccessibilityMenu() {
+  const menu = document.getElementById('accessibility-menu');
+  menu.classList.toggle('hidden');
+}
+
+function handleSearch() {
+  const query = document.getElementById('search-input').value.toLowerCase();
+  console.log('Consulta:', query); 
+  // lógica de pesquisa...
+}
+
+function toggleUnderline() {
+  const links = document.querySelectorAll('a');
+  links.forEach(link => {
+      link.style.textDecoration = link.style.textDecoration === 'underline' ? 'none' : 'underline';
+  });
+}
+  
+       // accessibility.js
+  document.addEventListener('DOMContentLoaded', function() {
+      const toggleButton = document.getElementById('accessibility-toggle');
+      const accessibilityMenu = document.getElementById('accessibility-menu');
+
+      toggleButton.addEventListener('click', function() {
+          // Alterna a classe 'hidden' para exibir ou ocultar o menu
+          accessibilityMenu.classList.toggle('hidden');
+      });
+  });
+
+// Selecionar o botão de alto contraste
+const highContrastToggle = document.getElementById('high-contrast-btn');
+
+// Alternar o modo de alto contraste
+highContrastToggle.addEventListener('click', () => {
+document.body.classList.toggle('high-contrast');
+});
+
+let colorblindMode = false;
+let highContrastMode = false;
+let fontSize = 1; // 0 = pequeno, 1 = médio, 2 = grande
+let colorblindType = 'normal';
+
+function toggleColorblindMode() {
+  colorblindMode = !colorblindMode;
+  localStorage.setItem('colorblindMode', colorblindMode);
+  applyColorblindMode();
+}
+
+function toggleHighContrastMode() {
+  highContrastMode = !highContrastMode;
+  localStorage.setItem('highContrastMode', highContrastMode);
+  applyHighContrastMode();
+}
+
+function changeFontSize(size) {
+  fontSize = size;
+  localStorage.setItem('fontSize', fontSize);
+  applyFontSize();
+  updateFontSizeSlider();
+}
+
+function changeColorblindType() {
+  const select = document.getElementById('colorblind-type');
+  colorblindType = select.value;
+  localStorage.setItem('colorblindType', colorblindType);
+  applyColorblindMode();
+}
+
+function applyColorblindMode() {
+  const filters = {
+      normal: 'none',
+      protanomaly: 'url("#protanomaly-filter")',
+      deuteranomaly: 'url("#deuteranomaly-filter")',
+      tritanomaly: 'url("#tritanomaly-filter")',
+      protanopia: 'url("#protanopia-filter")',
+      deuteranopia: 'url("#deuteranopia-filter")',
+      tritanopia: 'url("#tritanopia-filter")',
+      achromatopsia: 'url("#achromatopsia-filter")',
+      achromatomaly: 'url("#achromatomaly-filter")'
+  };
+
+  document.body.style.filter = filters[colorblindType];
+}
+
+function applyHighContrastMode() {
+  if (highContrastMode) {
+      document.body.classList.add('high-contrast');
+  } else {
+      document.body.classList.remove('high-contrast');
+  }
+}
+
+function applyFontSize() {
+  const sizes = ['14px', '16px', '18px'];
+  document.body.style.fontSize = sizes[fontSize];
+}
+
+function updateFontSizeSlider() {
+  const fontSizeRange = document.getElementById('font-size-range');
+  if (fontSizeRange) {
+      fontSizeRange.value = fontSize;
+  }
+}
+
+function loadSettings() {
+  colorblindMode = localStorage.getItem('colorblindMode') === 'true';
+  highContrastMode = localStorage.getItem('highContrastMode') === 'true';
+  fontSize = parseInt(localStorage.getItem('fontSize'));
+  colorblindType = localStorage.getItem('colorblindType') || 'normal';
+  
+  if (isNaN(fontSize) || fontSize < 0 || fontSize > 2) {
+      fontSize = 1;
+  }
+
+  applyColorblindMode();
+  applyHighContrastMode();
+  applyFontSize();
+  updateFontSizeSlider();
+
+  const colorblindTypeSelect = document.getElementById('colorblind-type');
+  if (colorblindTypeSelect) {
+      colorblindTypeSelect.value = colorblindType;
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const fontSizeRange = document.getElementById('font-size-range');
+  if (fontSizeRange) {
+      fontSizeRange.addEventListener('input', (e) => {
+          changeFontSize(parseInt(e.target.value));
+      });
+  }
+});
+
+window.onload = loadSettings;
+
+// Adicione os filtros SVG ao final do body
+document.body.insertAdjacentHTML('beforeend', `
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <defs>
+          <filter id="protanomaly-filter">
+              <feColorMatrix type="matrix" values="0.817,0.183,0,0,0 0.333,0.667,0,0,0 0,0.125,0.875,0,0 0,0,0,1,0"/>
+          </filter>
+          <filter id="deuteranomaly-filter">
+              <feColorMatrix type="matrix" values="0.8,0.2,0,0,0 0.258,0.742,0,0,0 0,0.142,0.858,0,0 0,0,0,1,0"/>
+          </filter>
+          <filter id="tritanomaly-filter">
+              <feColorMatrix type="matrix" values="0.967,0.033,0,0,0 0,0.733,0.267,0,0 0,0.183,0.817,0,0 0,0,0,1,0"/>
+          </filter>
+          <filter id="protanopia-filter">
+              <feColorMatrix type="matrix" values="0.567,0.433,0,0,0 0.558,0.442,0,0,0 0,0.242,0.758,0,0 0,0,0,1,0"/>
+          </filter>
+          <filter id="deuteranopia-filter">
+              <feColorMatrix type="matrix" values="0.625,0.375,0,0,0 0.7,0.3,0,0,0 0,0.3,0.7,0,0 0,0,0,1,0"/>
+          </filter>
+          <filter id="tritanopia-filter">
+              <feColorMatrix type="matrix" values="0.95,0.05,0,0,0 0,0.433,0.567,0,0 0,0.475,0.525,0,0 0,0,0,1,0"/>
+          </filter>
+          <filter id="achromatopsia-filter">
+              <feColorMatrix type="matrix" values="0.299,0.587,0.114,0,0 0.299,0.587,0.114,0,0 0.299,0.587,0.114,0,0 0,0,0,1,0"/>
+          </filter>
+          <filter id="achromatomaly-filter">
+              <feColorMatrix type="matrix" values="0.618,0.320,0.062,0,0 0.163,0.775,0.062,0,0 0.163,0.320,0.516,0,0 0,0,0,1,0"/>
+          </filter>
+      </defs>
+  </svg>
+`);
+  </script>
+  
+  <script>
+      const buttons = document.querySelectorAll('.accordion-button');
+  
+  buttons.forEach(button => {
+      button.addEventListener('click', function() {
+          const content = this.nextElementSibling;
+  
+          // Fecha todos os outros conteúdos
+          document.querySelectorAll('.accordion-content').forEach(item => {
+              if (item !== content) {
+                  item.style.display = 'none';
+              }
+          });
+  
+          // Alterna a exibição do conteúdo atual
+          content.style.display = content.style.display === 'block' ? 'none' : 'block';
+      });
+  });
+  </script>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+    <script>
+    
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

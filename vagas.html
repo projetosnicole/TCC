@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vagas</title>
+  <link rel="icon" href="img/icontest.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #3e7993;
+    }
+
+    /* Header and Main Container Styles */
+
+    .hero {
+      background-color: #73B5B7;
+      padding: 2rem;
+      text-align: center;
+      height: 690px;
+
+    }
+
+    .hero h1 {
+      font-size: clamp(1.3rem, 3vw + 1.3rem, 10rem);
+      margin-bottom: 5rem;
+      margin-top: 15%;
+      color: #fff;
+    }
+
+    .search-box {
+      position: relative;
+      margin-top: 2rem;
+      width: 50%;
+      margin-left: 22%;
+    }
+
+    .search-box input {
+      padding: 1rem 5rem 0.8rem 2.5rem;
+      font-size: 1.2rem;
+      border: transparent;
+      border-radius: 30px;
+      width: 100%;
+      outline: none;
+      transition: all 0.3s ease;
+      background-color: #3E7996;
+    }
+
+    .search-box input::placeholder {
+      color: white;
+  font-size: 1.3rem;
+    }
+
+    .search-box input:focus {
+      background-color: #3E7996;
+      border: 2px solid white;
+    }
+/*
+    .search-icon {
+      position: absolute;
+      left: 0.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+    }
+
+    /* Additional Jobs Section */
+    .additional-jobs {
+      background-color: #3e7993;
+      padding: 3rem;
+      padding-left: 10rem;
+      padding-right: 10rem;
+      text-align: center;
+    }
+
+    .additional-jobs h2 {
+      font-size: 2rem;
+      margin-bottom: 3.5rem;
+      color: white;
+    }
+
+    .job-listings {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .job-card {
+      background-color: #ADDFD0;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      text-align: left;
+      position: relative;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .job-card:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .job-card h3 {
+      font-size: 1.2rem;
+      margin-top: 5px;
+      margin-bottom: 20px; /* Reduzido para 2px */
+      margin-left: -15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .job-card p {
+      margin-bottom: 0;
+      margin-top: 1%;
+
+      
+    }
+
+    .job-details {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #ADDFD0;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 0.5rem;
+      padding: 1rem;
+      z-index: 1;
+    }
+
+    .job-card.expanded .job-details {
+      display: block;
+    }
+
+    .toggle-btn {
+      background-color: #4BA0A3;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0.7rem 1.2rem;
+      transition: background-color 0.3s ease;
+      margin-top: 7%;
+      margin-left: 20%;
+    }
+
+    .toggle-btn:hover {
+      background-color: #008bb5;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .job-card.expanded .arrow {
+      transform: rotate(180deg);
+    }
+
+    .espaca {
+      margin-top: 30px;
+    }
+
+
+    .header {
+      display: flex;
+      align-items: center;
+    }
+
+    .icon-container {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin-right: 1rem;
+    }
+
+    .icon-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .icon-circle i {
+      font-size: 2rem;
+      color: #3E7A96;
+    }
+
+    .text-container {
+      flex: 1;
+    }
+
+    .subtitle {
+      font-size: 0.7rem;
+      font-weight: bold;
+      color: #2D2E47;
+      margin-left: -15px;
+    }
+
+    .company-info {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .alinha{
+      margin-left: 25px;
+    }
+    nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: left;
+            margin-top: 1%;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 30px;
+            padding-right: 30%;
+            padding-left: 30%;
+            margin: 0;
+            display: flex;
+            justify-content: space-around; 
+            position: fixed; 
+            top: 0;
+            width: 40%;
+            background-color: transparent; 
+            transition: background-color 0.3s ease; 
+            z-index: 1000; 
+        }
+
+        @media screen and (max-width: 1440px) {
+            .nav-list {
+                padding-left: 27%;
+                padding-right: 33%;
+            }
+        }
+
+        @media screen and (max-width: 1280px) {
+            .nav-list {
+                padding: 25px;
+                padding-left: 22%;
+                padding-right: 40%;
+            }
+        } 
+
+    .nav-background {
+            background-color: #2D2F48;
+        }
+
+        @media (max-width: 1044px) {
+            .nav-background {
+                background-color: transparent;
+            }
+        }  
+
+        .logo {
+            color: #3E7996;
+            font-size: 1.4rem;
+        }
+
+        .nav-list ul {
+            font-size: 1.3rem;
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-list ul li {
+            margin: 0 45px;
+        }
+
+        .nav-list ul li a {
+            color: white;
+            text-decoration: none;
+        } 
+
+        .menu-icon {
+            font-size: 24px;
+            color: #F3FFF3;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: none; 
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px; 
+            background-color: #F3FFF3;
+            transition: left 0.3s;
+            padding-top: 60px;
+            z-index: 999;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .sidebar ul li a {
+            color: #4BA0A3;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1044px) {
+            .menu-icon {
+                display: block; 
+            }
+
+            .nav-list {
+                display: none; 
+            }
+        }
+
+        header {
+            float: left;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container-6{
+        max-width: 1920%;
+        height: 380%;
+          padding: 0.3% 1%;
+        background-color: #ADDFD0;
+      }
+
+      .incluwork{
+  text-align: center;
+  font-size: 3em;
+  color: #2D2E47;
+}
+        
+.footer{
+  font-size: 1.3rem;
+  list-style: none;
+  text-align: center;
+  margin-top: 1%;
+}
+
+@media screen and (max-width: 860px){
+  .footer{
+    font-size: 0.8rem;
+  }
+}
+
+.footer li{
+  display: inline;
+}
+
+.footer ul li a{
+  color: #1F99A5;
+  margin-left: 1.5%;
+  text-decoration: none;
+}
+
+.email p{
+  margin-top: 2%;
+  color: #3E7996;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 860px){
+  .email p{
+    font-size: 0.8rem;
+  }
+}
+
+footer{
+  background-color: #2D2F48;
+  height: 30px;
+}
+
+h5{
+  text-align: center;
+  font-size: 3em;
+  color: #2D2E47;
+}
+
+@media screen and (max-width: 860px){
+  h5{
+    font-size: 1.3em;
+  }
+}
+/*BOTAO DE CURRICULO*/
+.cont{
+            background-color: #2D2F48;
+            max-width: 100%;
+            height: 250px;
+            padding: 5% 10% 2% 10%;
+        }
+        .mission{
+            color: #73B5B7;
+            text-align: center;
+            font-size: 50px;
+            margin-top: 0;
+            font-weight: normal;  
+            margin-bottom: 1%;
+        }
+
+        .missiop{
+            color: #73B5B7;
+            text-align: center;
+            font-size: 25px;
+            font-weight: normal;  
+            padding: 0 120px 0 120px;
+            margin-top: 1.5%;
+        }
+
+        .btn{
+          background-color: #73B5B7;
+          border: none;
+          border-radius: 20px;
+          color: #2D2F48;
+          cursor: pointer;
+          font-size: 1rem;
+          padding: 0.7rem 1.2rem;
+          width: 20%;
+          margin-top: 1%;
+          margin-left: 40%;
+        }
+        /*Frame*/
+        .frame-container {
+            max-width: 58%;
+            width: 80%;
+            height: 100%;
+            position: fixed;
+            overflow: hidden;
+        }
+        .wavy-shape {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: transparent; /* Torna a forma transparente */
+            animation: rotate 10s infinite linear;
+        }
+
+        .wavy-shape:nth-child(1){ top: 0; left: 0;  }
+        .wavy-shape:nth-child(2){ top: 0; left: 0;  }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+        <div class="sidebar" id="sidebar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="vagas.html">Vagas</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-list">
+        <ul >
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cursos.html">Cursos</a></li>                
+            <li><a href="vagas.html">Vagas</a></li>
+            <li><a href="sobre.html">Sobre</a></li>                
+            <li><a href="login.html">Login</a></li>
+        </ul>
+        </div>
+
+        <div class="menu-icon" onclick="toggleMenu()">
+            &#9776;
+        </div>
+    </nav>
+</header>
+
+  <main>
+    <section class="hero">
+      <div class="frame-container">
+        <div class="wavy-shape"></div>
+        <div class="wavy-shape"></div>
+    </div>
+      <h1>+10 VAGAS <br> DISPONIVEIS</h1>
+      <div class="search-box">
+        <span class="search-icon"></span>
+        <input type="text" placeholder="Pesquisar vagas e empresas de interesse">
+      </div>
+    </section>
+
+    <section class="additional-jobs">
+      <h2>Vagas Disponíveis</h2>
+      <div class="espaca"></div>
+
+      <div class="job-listings">
+        <div class="job-card">
+          <div class="header">
+            <div class="icon-container">
+              <div class="icon-circle">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+            </div>
+            <div class="text-container">
+              <p class="subtitle">Balconista</p>
+              <h3>Vaga de caixa</h3>
+            </div>
+          </div>
+          <p class="alinha">Extra, Supermercedo</p>
+          <p class="alinha">Ribeirão Pires, SP</p>
+          <div class="arrow">↓</div>
+          <div class="job-details">
+            <p class="alinha">Requisitos:</p>
+            <ul>
+              <li>Deficiente Intelectual</li>
+              <li>Definir na entrevista</li>
+            </ul>
+            <p class="alinha">Beneficios:</p>
+            <br>
+            <p class="alinha">Definir na entrevista</p>
+            <br>
+            <p class="alinha">Localização:</p>
+            <br>
+            <p class="alinha">R. João Domingues de Oliveira, 194 - Centro, Ribeirão Pires - SP, 09400-250</p>
+            <a href="curriculo.html"><button class="toggle-btn">Me Candidatar</button></a>
+          </div>
+        </div>
+
+        <div class="job-card">
+          <div class="header">
+            <div class="icon-container">
+              <div class="icon-circle">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+            </div>
+            <div class="text-container">
+              <p class="subtitle">Balconista</p>
+              <h3>Vaga de Balconista</h3>
+            </div>
+          </div>
+          <p class="alinha">Ultrafarma, Farmacia</p>
+          <p class="alinha">Ribeirão Pires, SP</p>
+          <div class="arrow">↓</div>
+          <div class="job-details">
+            <p class="alinha">Requisitos:</p>
+            <ul>
+              <li>Qualquer tipo de deficiência</li>
+              <li>Definir na entrevista</li>
+            </ul>
+            <p class="alinha">Beneficios:</p>
+            <br>
+            <p class="alinha">Definir na entrevista</p>
+            <br>
+            <p class="alinha">Localização:</p>
+            <br>
+            <p class="alinha">R. do Comércio, 87 - Centro, Ribeirão Pires - SP, 09400-200</p>
+            <a href="curriculo.html"><button class="toggle-btn">Me Candidatar</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="espaca"></div>
+      <div class="job-listings">
+        <div class="job-card">
+          <div class="header">
+            <div class="icon-container">
+              <div class="icon-circle">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+            </div>
+            <div class="text-container">
+              <p class="subtitle">Balconista</p>
+              <h3>Vaga de Caixa</h3>
+            </div>
+          </div>
+          <p class="alinha">Extra, Supermercado</p>
+          <p class="alinha">Ribeirão Pires, SP</p>
+          <div class="arrow">↓</div>
+          <div class="job-details">
+            <p class="alinha">Requisitos:</p>
+            <ul>
+              <li>Deficiente Físico</li>
+              <li>Definir na entrevista</li>
+            </ul>
+            <p class="alinha">Beneficios:</p>
+            <br>
+            <p class="alinha">Definir na entrevista</p>
+            <br>
+            <p class="alinha">Localização:</p>
+            <br>
+            <p class="alinha"> R. Dr. Felício Laurito, 38 - Centro, Ribeirão Pires - SP, 09400-210</p>
+            <a href="curriculo.html"><button class="toggle-btn">Me Candidatar</button></a>
+          </div>
+        </div>
+
+        <div class="job-card">
+          <div class="header">
+            <div class="icon-container">
+              <div class="icon-circle">
+                <i class="fas fa-phone"></i>
+              </div>
+            </div>
+            <div class="text-container">
+              <p class="subtitle">Atendente</p>
+              <h3>Vaga de Atendente de Loja</h3>
+            </div>
+          </div>
+          <p class="alinha">Estrela, Loja de roupas</p>
+          <p class="alinha">Ribeirão Pires, SP</p>
+          <div class="arrow">↓</div>
+          <div class="job-details">
+            <p class="alinha">Requisitos:</p>
+            <ul>
+              <li>Deficiente auditivo</li>
+              <li>A definir</li>
+            </ul>
+            <p class="alinha">Beneficios:</p>
+            <br>
+            <p class="alinha">Definir na entrevista</p>
+            <br>
+            <p class="alinha">Localização:</p>
+            <br>
+            <p class="alinha">R. Afrânio Peixoto, 90 - Centro, Ribeirão Pires - SP, 09400-230</p>
+            <a href="curriculo.html"><button class="toggle-btn">Me Candidatar</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="espaca"></div>
+      <div class="job-listings">
+        <div class="job-card">
+          <div class="header">
+            <div class="icon-container">
+              <div class="icon-circle">
+                <i class="fas fa-server "></i>
+              </div>
+            </div>
+            <div class="text-container">
+              <p class="subtitle">Auxiliar</p>
+              <h3>Vaga de Auxiliar de Loja</h3>
+            </div>
+          </div>
+          <p class="alinha">Ri Happy</p>
+          <p class="alinha">Santo André, SP</p>
+          <div class="arrow">↓</div>
+          <div class="job-details">
+            <p class="alinha">Requisitos:</p>
+            <ul>
+              <li>A definir</li>
+            </ul>
+            <p class="alinha">Beneficios:</p>
+            <br>
+            <p class="alinha">Definir na entrevista</p>
+            <br>
+            <p class="alinha">Localização:</p>
+            <br>
+            <p class="alinha">Rua Giovanni Battista Pirelli, 155 - Vila Homero Thon, Santo André - SP, 09111-340</p>
+            <a href="curriculo.html"><button class="toggle-btn">Me Candidatar</button></a>
+          </div>
+        </div>
+
+        <div class="job-card">
+          <div class="header">
+            <div class="icon-container">
+              <div class="icon-circle">
+                <i class="fas fa-server"></i>
+              </div>
+            </div>
+            <div class="text-container">
+              <p class="subtitle">Auxiliar</p>
+              <h3>Vaga de operador de Supermercado</h3>
+            </div>
+          </div>
+          <p class="alinha">Semar, Supermercado</p>
+          <p class="alinha">Suzano, SP</p>
+          <div class="arrow">↓</div>
+          <div class="job-details">
+            <p class="alinha">Requisitos:</p>
+            <ul>
+              <li>A definir</li>
+            </ul>
+            <p class="alinha">Beneficios:</p>
+            <br>
+            <p class="alinha">Definir na entrevista</p>
+            <br>
+            <p class="alinha">Localização:</p>
+            <br>
+            <p class="alinha">Estr. Samuel, 4600 - Fazenda Aya, Suzano - SP, 08620-000 </p>
+            <a href="curriculo.html"><button class="toggle-btn">Me Candidatar</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="espaca"></div>
+      <div class="job-listings">
+        <div class="job-card">
+          <div class="header">
+            <div class="icon-container">
+              <div class="icon-circle">
+                <i class="fas fa-server "></i>
+              </div>
+            </div>
+            <div class="text-container">
+              <p class="subtitle">Auxiliar</p>
+              <h3>Vaga para auxiliar logistico</h3>
+            </div>
+          </div>
+          <p class="alinha"></p>
+          <p class="alinha">São Bernardo do Campo, SP</p>
+          <div class="arrow">↓</div>
+          <div class="job-details">
+            <p class="alinha">Requisitos:</p>
+            <ul>
+              <li>A definir</li>
+            </ul>
+            <p class="alinha">Beneficios:</p>
+            <br>
+            <p class="alinha">Definir na entrevista</p>
+            <br>
+            <p class="alinha">Localização:</p>
+            <br>
+            <p class="alinha">Av. Pereira Barreto, 1500 - Baeta Neves, São Bernardo do Campo - SP, 09751-000</p>
+            <a href="curriculo.html"><button class="toggle-btn">Me Candidatar</button></a>
+          </div>
+        </div>
+
+        <div class="job-card">
+          <div class="header">
+            <div class="icon-container">
+              <div class="icon-circle">
+                <i class="fas fa-envelope"></i>
+              </div>
+            </div>
+            <div class="text-container">
+              <p class="subtitle">Assistente</p>
+              <h3>Vaga de Assistente de loja</h3>
+            </div>
+          </div>
+          <p class="alinha">DHL Supply Chain</p>
+          <p class="alinha">São Bernardo do Campo, SP</p>
+          <div class="arrow">↓</div>
+          <div class="job-details">
+            <p class="alinha">Requisitos:</p>
+            <ul>
+              <li>A Definir</li>
+            </ul>
+            <p class="alinha">Beneficios:</p>
+            <br>
+            <p class="alinha">Definir na entrevista</p>
+            <br>
+            <p class="alinha">Localização:</p>
+            <br>
+            <p class="alinha">Av. Pereira Barreto, 1500 - Baeta Neves, São Bernardo do Campo - SP, 09751-000</p>
+            <a href="curriculo.html"><button class="toggle-btn">Me Candidatar</button></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="cont">
+    <h1 class="mission">Ainda não possuo um currículo</h1>
+    <p class="missiop">Faça já o seu cúrriculo de forma fácil e gratuita, e garanta que suas informações chegue ate o recrutador de forma clara e objetiva.</p>
+    <button class="btn" href="curriculo.html">Fazer curriculo</button>
+</div>
+
+  <div class="container-6">
+    <p class="incluwork">IncluWork</p>
+    <div class="footer">
+        <ul >
+            <li><a href="">Home</a></li>
+            <li><a href="">Cursos</a></li>                
+            <li><a href="">Vagas</a></li>
+            <li><a href="">Sobre</a></li>                
+            <li><a href="">Login</a></li>
+        </ul>
+    </div>
+    <div class="email"><p>incluwork@gmail.com <br> (11) 9523-4433</p></div>
+</div>
+
+<footer></footer>
+
+  <script>
+    const jobCards = document.querySelectorAll('.job-card');
+
+    jobCards.forEach(card => {
+      const arrow = card.querySelector('.arrow');
+      arrow.addEventListener('click', () => {
+        jobCards.forEach(c => {
+          if (c !== card) {
+            c.classList.remove('expanded');
+          }
+        });
+        card.classList.toggle('expanded');
+      });
+    });
+  </script>
+   <script src="script.js"></script>
+</body>
+</html>

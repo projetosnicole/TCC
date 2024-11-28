@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-IncluWork</title>
+    <link rel="icon" href="img/icontest.png" type="image/x-icon">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <style>
+        
+        /* Estilos Gerais */
+           body {
+               position: relative;
+           }
+           .container{
+               background-color: #2D2E47;
+               max-width: 45%;
+               margin:0 auto;
+               padding: 20px;
+               position: fixed;
+               top: 0;
+               right: 0;
+               width: 40%;
+               height: 100%;  
+               color:#F3FFF3;      
+           }
+           h1{
+               font-size: 50px;
+               color: #FFFFFF;
+               text-align: center;
+               margin-top: 23%;
+           }
+
+           h2 {
+           font-size: 35px;
+           color: #F0FFF0;
+           text-align: center;
+           margin-top: 8px;
+           }
+
+           h3{
+               font-size: 20px;
+               color: #fff;
+               margin-top: 25px;
+               text-align: center;
+           }
+           .label {
+               font-size: 23px;
+               color: #F0FFF0; 
+               margin-top:30px;
+               margin-left: 12%;
+               display: block; 
+           }
+           .label-deficiencia {
+                   font-weight: bold; /* Texto em negrito */
+                   text-transform: uppercase; /* Texto em maiúsculas */
+                   letter-spacing: 1px; /* Espaçamento entre letras */
+               }
+           input, .select {
+               background-color: transparent;
+               padding: 10px; 
+               color: #fff;
+               border: 2px solid #fff;
+               border-radius: 50px;
+               font-size: 1.2em;
+               outline: none;
+               transition: background-color 0.3s, color 0.3s;
+               margin-top: 5px; 
+               width: calc(80% - 20px); 
+               margin-left: 10%;
+               display: block; 
+           }
+           .select{
+                   width: calc(85% - 20px); 
+                   appearance: none;
+                   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M7 10l5 5 5-5H7z"/></svg>');
+                   background-repeat: no-repeat;
+                   background-position: right 10px center;
+               }
+
+               .select option {
+                   background-color: #2D2E47; /* Cor de fundo das opções */
+                   color: #F0FFF0; /* Cor do texto das opções */
+               }
+
+           .submit-button {
+               background-color: #00BAB4; /* Cor de fundo do botão */
+               color: #fff; /* Cor do texto do botão */
+               border: none; /* Remove a borda padrão do botão */
+               padding: 10px 20px; /* Espaçamento interno do botão */
+               border-radius: 50px; /* Bordas arredondadas */
+               font-size: 1.2em; /* Tamanho da fonte */
+               cursor: pointer; /* Cursor de ponteiro ao passar sobre o botão */
+               transition: background-color 0.3s, transform 0.3s; /* Transições suaves */
+               margin-top: 40px; /* Margem superior para separar do input */
+               width: 40%; /* Largura total do botão */
+               text-align: center; /* Alinha o texto ao centro */
+               margin-left: 30%;
+           }
+           
+           .submit-button:hover {
+               background-color: #3E7996; /* Cor de fundo ao passar o mouse */
+               transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+           }
+           .espaca{
+                   margin-top: 20px;
+               }
+           .logo{
+                position: absolute;
+               display: block;
+               margin-left: 15%;
+               margin-top: 13%;
+               z-index: 1000;
+               background-color: #f3fff3; /* Cor de fundo do container */
+               border-radius: 40px;
+               box-shadow: 0 0 3px rgba(0, 0, 0, 0.1); /* Sombra para um efeito mais suave */
+               justify-content: center;
+               align-items: center;
+               max-width: 100%;
+               height: auto;
+               padding: 35px;
+           }
+           /*FRAME*/
+           .frame-container {
+                   max-width: 58%;
+                   width: 80%;
+                   height: 100%;
+                   position: fixed;
+                   background-color: rgba(6, 158, 111, 0.3); /* Cor de fundo similar à da imagem */
+                   overflow: hidden;
+               }
+               .wavy-shape {
+                   position: absolute;
+                   width: 250px;
+                   height: 250px;
+                   background: transparent; /* Torna a forma transparente */
+                   animation: rotate 10s infinite linear;
+               }
+               .wavy-shape:nth-child(1) {
+                   top: -90px;
+                   left: -110px;
+                   animation-duration: 30s;
+                   border: 3px solid #F3FFF3;
+                   border-radius:  35% 90% 40% 50% / 35% 70% 40% 55% ;
+               }
+               .wavy-shape:nth-child(2) {
+                   top: -30px;
+                   left: 200px;
+                   animation-duration: 30s;
+                   border: 3px solid #4BA0A3;
+                   border-radius: 50% 35% 90% 40% / 55% 35% 70% 40%  ;
+               }
+               .wavy-shape:nth-child(3) {
+                   top: -130px;
+                   left: 750px;
+                   animation-duration: 30s;
+                   border: 3px solid #F3FFF3;
+                   border-radius: 40% 50% 35% 90% / 40% 55% 35% 70%;
+               }
+               .wavy-shape:nth-child(4) {
+                   top: 80px;
+                   left: 500px;
+                   animation-duration: 30s;
+                   border: 3px solid #2D2E47;
+                   border-radius: 35% 70% 40% 55% / 35% 90% 40% 50%;
+               }
+               .wavy-shape:nth-child(5) {
+                   top: 250px;
+                   left: -55px;
+                   animation-duration: 30s;
+                   border: 3px solid #3E7996;
+                   border-radius: 35% 70% 40% 55% / 35% 90% 40% 50% ; 
+               }
+               .wavy-shape:nth-child(6) {
+                   top: 390px;
+                   left: 230px;
+                   animation-duration: 30s;
+                   border: 3px solid #3B5A6A;
+                   border-radius: 35% 70% 40% 55% / 35% 90% 40% 50%; 
+               }
+               .wavy-shape:nth-child(7) {
+                   top: 190px;
+                   left: 840px;
+                   animation-duration: 30s;
+                   border: 3px solid #00BAB4;
+                   border-radius: 35% 70% 40% 55% / 35% 90% 40% 50% ; 
+               }
+               .wavy-shape:nth-child(8) {
+                   top: 410px;
+                   left: 600px;
+                   animation-duration: 30s;
+                   border: 3px solid #73B5B7;
+                   border-radius: 35% 90% 40% 50% / 35% 70% 40% 55%; 
+               }
+               .wavy-shape:nth-child(9) {
+                   bottom: 90px;
+                   left: -30px;
+                   animation-duration: 30s;
+                   border: 3px solid #00BAB4;
+                   border-radius: 35% 90% 40% 50% / 35% 70% 40% 55% ; 
+               }
+               .wavy-shape:nth-child(10) {
+                   bottom: -1px;
+                   left: 300px;
+                   animation-duration: 30s;
+                   border: 3px solid #F3FFF3;
+                   border-radius: 35% 90% 40% 50% / 35% 70% 40% 55%; 
+               }
+               .wavy-shape:nth-child(11) {
+                   bottom: -50px;
+                   left: 630px;
+                   animation-duration: 30s;
+                   border: 3px solid #2D2E47;
+                   border-radius: 35% 90% 40% 50% / 35% 70% 40% 55% ; 
+               }
+               .wavy-shape:nth-child(12) {
+                   bottom: 160px;
+                   left: 900px;
+                   animation-duration: 30s;
+                   border: 3px solid #3E7996;
+                   border-radius: 35% 90% 40% 50% / 35% 70% 40% 55% ; 
+               }
+               .wavy-shape:nth-child(13) {
+                   bottom: -190px;
+                   left:950px;
+                   animation-duration: 30s;
+                   border: 3px solid #00BAB4;
+                   border-radius: 35% 90% 40% 50% / 35% 70% 40% 55% ; 
+               }
+
+               @keyframes rotate {
+                   0% {
+                       transform: rotate(0deg);
+                       border-radius: 35% 90% 40% 50% / 35% 70% 40% 55% ;
+                   }
+                   100% {
+                       transform: rotate(360deg);
+                       border-radius: 35% 70% 40% 55% / 35% 90% 40% 50% ;
+                   }
+       
+               }
+       
+               .custom-select {
+                   position: relative;
+                   display: inline-block;
+                   width: calc(84% - 20px);
+                   margin: 0 auto;
+                   margin-left: 10%;
+               }
+       
+               .label-opcoes {
+                   margin-top: 45px;
+                   margin-left: 12%;
+                   display: block; 
+                   background-color: transparent;
+                   padding: 10px; 
+                   color: #fff;
+                   border: 2px solid #fff;
+                   border-radius: 50px;
+                   font-size: 1.2em;
+                   outline: none;
+                   transition: all 0.3s ease;
+                   margin-top: 5px; 
+                   width: calc(84% - 20px); 
+                   margin-left: 10%;
+                   cursor: pointer;
+               }
+       
+               p{
+                   font-size: 25px;
+                   color: #F0FFF0; 
+                   margin-left: 12%;
+                   display: block; 
+               }
+
+               .btnn{
+                color: #fff; /* Cor do texto do botão */
+                border: none; /* Remove a borda padrão do botão */
+                font-size: 1em; /* Tamanho da fonte */
+                cursor: pointer; /* Cursor de ponteiro ao passar sobre o botão */
+                transition: background-color 0.3s, transform 0.3s; /* Transições suaves */
+                margin-top: 40px; /* Margem superior para separar do input */
+                width: 40%; /* Largura total do botão */
+                text-align: center; /* Alinha o texto ao centro */            
+               }
+
+               /*icon*/
+
+               .login-options {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+                }
+
+                .login-options img {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 12px 10px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+                transition: transform 0.2s, box-shadow 0.2s;
+                }
+
+                .login-options img:hover {
+                transform: translateY(-2px);
+                }
+
+                .login-img{
+                    position: absolute;
+                    display: block;
+                    margin-left: 15%;
+                    margin-top: 185px;
+                    justify-content: center;
+                    align-items: center;
+                    width: 30%;
+                    height: auto;
+                    padding: 35px;
+                }
+
+                .imagem{
+                    width: 35px;
+                    height: 35px;
+                }
+                
+                .hidden {
+  display: none;
+}
+
+.reader-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.speed-control {
+  margin-top: 10px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none; 
+  appearance: none; 
+  width: 80%; 
+  height: 2px; 
+  background: #F3FFF3; 
+  border-radius: 100px; 
+  outline: none; 
+  border: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  border: none;
+  -webkit-appearance: none; 
+  appearance: none; 
+  width: 15px; 
+  height: 15px; 
+  border-radius: 50%;
+  background: #2D3748; 
+  cursor: pointer; 
+}
+input[type="range"]::-moz-range-thumb {
+  border: none;
+  width: 15px; 
+  height: 8px; 
+  border-radius: 50%; 
+  background: #2D3748; 
+  cursor: pointer; 
+}
+
+#accessibility-menu {
+  position: fixed;
+  top: 275px;
+  left: 20px;
+  background-color: #ADDFD0;
+  color: #F3FFF3;
+  padding: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000; 
+  border: none;
+}
+
+.accessibility-button {
+  position: fixed; 
+  right: 10px; 
+  top: 320px; 
+  z-index: 1000; 
+}
+
+.accessibility-button button {
+  background-color: #3185F0; 
+  color: white;
+  border: none; 
+  padding: 5.5px; 
+  border-radius: 10px; 
+  cursor: pointer; 
+  font-size: 1.8rem;
+}
+
+.botao button {
+  background-color: #F3FFF3; 
+  color: #2d3748; 
+  border: none; 
+  width: 290px;
+  padding: 10px;
+  border-radius: 10px; 
+  cursor: pointer;
+  font-size: 1.2rem; 
+  margin-top: 5px; 
+  transition: background-color 0.3s, transform 0.2s; 
+}
+
+select{
+  color: #2D3748; 
+  border: none; 
+  background-color: #F3FFF3; 
+  width: 290px;
+  padding: 10px;
+  border-radius: 10px; 
+  cursor: pointer;
+  font-size: 1.2rem; 
+  margin-top: 5px; 
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+body.high-contrast select {
+  background-color: #444;
+  color: #fff;
+}
+
+body.high-contrast #accessibility-menu {
+  background-color: #1a202c;
+  color: #fff;
+}
+
+body.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Estilos para alto contraste */
+body.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+body.high-contrast ul li a {
+  color: #0ff; 
+  text-decoration: underline; 
+}
+
+body.high-contrast nav,
+body.high-contrast .nav-background,
+body.high-contrast header,
+body.high-contrast footer {
+  background-color: #222; /* Cor de fundo para barras de navegação e rodapé */
+  color: #fff;
+}
+
+body.high-contrast .container,
+body.high-contrast .container-1,
+body.high-contrast .container-3,
+body.high-contrast .container-5{
+  background-color: #222;
+  color: #fff;
+}
+
+body.high-contrast .container-2,
+body.high-contrast .container-4,
+body.high-contrast .container-6 {
+  background-color: #333;
+  color: #fff;
+}
+
+body.high-contrast button {
+  background-color: #444;
+  color: #fff;
+  border-color: #fff;
+}
+
+body.high-contrast button:hover {
+  background-color: #555;
+}
+
+body.high-contrast input{
+  background-color: #444;
+}
+
+body.high-contrast textarea {
+  background-color: #222;
+  color: #fff;
+  border-color: #fff;
+}
+
+body.high-contrast .logo{
+    filter: invert(100%) grayscale(100%);
+}
+
+body.high-contrast .accordion-button {
+  background-color: #444;
+  color: #fff;
+}
+
+body.high-contrast .accordion-content {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Dots no carrossel */
+body.high-contrast .dot {
+  background-color: #fff;
+}
+
+body.high-contrast .dot.active {
+  background-color: #0ff;
+}
+
+/* Footer e texto */
+body.high-contrast p {
+  color: #ccc;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3 {
+  color: #fff;
+}
+
+nav.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+body.spaced-letters * {
+  letter-spacing: 1.5px;
+}
+
+body.underline-links a {
+  text-decoration: underline;
+}
+
+body.colorblind-mode img {
+  filter: grayscale(100%);
+}
+
+           </style>
+<body>
+    <div class="">
+        <img class="logo" src="img/logo2.png" alt="logo">
+        <div class="frame-container">
+            <div class="wavy-shape"></div>
+            <div class="wavy-shape"></div>
+            <div class="wavy-shape"></div>
+            <div class="wavy-shape"></div>
+            <div class="wavy-shape"></div>
+            <div class="wavy-shape"></div>
+            <div class="wavy-shape"></div>
+            <div class="wavy-shape"></div>
+            <div class="wavy-shape"></div>
+            <div class="wavy-shape"></div>
+            <div class="wavy-shape"></div>
+            <div class="wavy-shape"></div>
+            <div class="wavy-shape"></div>
+            <div class="wavy-shape"></div>
+        </div>
+        <div class="container">
+            <h1 class="text-to-read">Entre no seu perfil</h1>
+            <h2 class="text-to-read">Bem-vindo(a) de volta!</h2>
+            <div class="espaca">
+                <form id="login-form">
+                    <label class="label" for="login-email">E-mail ou usuário</label>
+                    <input type="text" id="login-email" name="login-email" required>
+                    <label class="label" for="login-senha">Senha</label>
+                    <input type="password" id="login-senha" name="login-senha" required>
+                    <button type="submit" class="submit-button">Entrar</button>
+                </form>
+                <div id="message" style="color: red; text-align: center;"></div>
+                <h3><a class="btnn" id="register-button"  type="submit" style="text-decoration: none; color: inherit;">Ainda não tenho cadastro</a></h3>
+            </div>
+            <h3 class="text-to-read">Ou entre com:</h3>
+            <div class="login-options">
+                  <img class="imagem" type="submit" src="img/icons8-google-logo-50.png">
+                  <img class="imagem" type="submit" src="img/icons8-linkedin-50.png" >
+
+            </div>
+        </div>
+    </div>
+
+    <div class="accessibility-button">
+        <button id="accessibility-toggle">
+            <i class="fas fa-universal-access"></i>
+        </button>
+    </div>
+    <div id="accessibility-menu" class="hidden">
+        <div class="font-size-slider">
+            <span class="font-size-label small">A</span>
+            <span class="font-size-label large">A</span>
+            <input type="range" id="font-size-range" min="0" max="3" step="1" value="1" onchange="changeFontSize(this.value)">
+        </div> <br>
+        <div class="botao">
+            <button id="high-contrast-btn">Alto Contraste</button> <br>
+            <button onclick="toggleLetterSpacing()">Espaçamento de Letras</button> <br>
+            <button onclick="toggleUnderline()">Sublinhar Links</button> <br>
+            <select id="colorblind-type" onchange="changeColorblindType()">
+                <option value="normal">Adaptações para daltonismo</option>
+                <optgroup label="Formas Leves">
+                    <option value="protanomaly">Protanomalia (Vermelho fraco)</option>
+                    <option value="deuteranomaly">Deuteranomalia (Verde fraco)</option>
+                    <option value="tritanomaly">Tritanomalia (Azul fraco)</option>
+                </optgroup>
+                <optgroup label="Formas Severas">
+                    <option value="protanopia">Protanopia (Sem vermelho)</option>
+                    <option value="deuteranopia">Deuteranopia (Sem verde)</option>
+                    <option value="tritanopia">Tritanopia (Sem azul)</option>
+                </optgroup>
+                <optgroup label="Monocromacia">
+                    <option value="achromatomaly">Acromatomalia (Quase sem cores)</option>
+                    <option value="achromatopsia">Acromatopsia (Sem cores)</option>
+                </optgroup>
+            </select> <br>
+            <button onclick="startReading()">Iniciar Leitura</button> <br>
+            <button onclick="stopReading()">Parar Leitura</button> <br>
+            <div class="speed-control">
+                <label for="speed">Velocidade:</label> <br>
+                <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1">
+            </div>
+        </div>
+    </div>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script>
+
+let speech = new SpeechSynthesisUtterance();
+    const textElements = document.querySelectorAll('.text-to-read');
+    
+    function startReading() {
+        let fullText = Array.from(textElements).map(element => element.innerText).join(' ');
+        speech.text = fullText;
+        speech.rate = document.getElementById('speed').value;
+        window.speechSynthesis.speak(speech);
+    }
+
+    function stopReading() {
+        window.speechSynthesis.cancel();
+    }
+
+    document.getElementById('speed').addEventListener('input', function() {
+        speech.rate = this.value;
+    });
+
+function applyFontSize() {
+    const sizes = ['14px', '16px', '18px', '20px'];
+    const elements = document.querySelectorAll(
+        'a, button, h2, h3, h1, .accordion-button, .accordion-content'
+    );
+
+    elements.forEach((element) => {
+        element.style.fontSize = sizes[fontSize];
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const fontSizeRange = document.getElementById('font-size-range');
+    fontSizeRange.addEventListener('input', (e) => {
+        fontSize = parseInt(e.target.value);
+        applyFontSize();
+    });
+
+    // Aplicar configurações ao carregar a página
+    loadSettings();
+});
+
+
+function toggleLetterSpacing() {
+    document.body.style.letterSpacing = document.body.style.letterSpacing === '2px' ? 'normal' : '2px';
+}
+
+function toggleHighContrast() {
+    document.body.classList.toggle('high-contrast');
+}
+
+function toggleAccessibilityMenu() {
+    const menu = document.getElementById('accessibility-menu');
+    menu.classList.toggle('hidden');
+}
+
+function handleSearch() {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    console.log('Consulta:', query); 
+    // lógica de pesquisa...
+}
+
+function toggleUnderline() {
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+        link.style.textDecoration = link.style.textDecoration === 'underline' ? 'none' : 'underline';
+    });
+}
+    
+         // accessibility.js
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButton = document.getElementById('accessibility-toggle');
+        const accessibilityMenu = document.getElementById('accessibility-menu');
+
+        toggleButton.addEventListener('click', function() {
+            // Alterna a classe 'hidden' para exibir ou ocultar o menu
+            accessibilityMenu.classList.toggle('hidden');
+        });
+    });
+
+// Selecionar o botão de alto contraste
+const highContrastToggle = document.getElementById('high-contrast-btn');
+
+// Alternar o modo de alto contraste
+highContrastToggle.addEventListener('click', () => {
+  document.body.classList.toggle('high-contrast');
+});
+
+let colorblindMode = false;
+let highContrastMode = false;
+let fontSize = 1; // 0 = pequeno, 1 = médio, 2 = grande
+let colorblindType = 'normal';
+
+function toggleColorblindMode() {
+    colorblindMode = !colorblindMode;
+    localStorage.setItem('colorblindMode', colorblindMode);
+    applyColorblindMode();
+}
+
+function toggleHighContrastMode() {
+    highContrastMode = !highContrastMode;
+    localStorage.setItem('highContrastMode', highContrastMode);
+    applyHighContrastMode();
+}
+
+function changeFontSize(size) {
+    fontSize = size;
+    localStorage.setItem('fontSize', fontSize);
+    applyFontSize();
+    updateFontSizeSlider();
+}
+
+function changeColorblindType() {
+    const select = document.getElementById('colorblind-type');
+    colorblindType = select.value;
+    localStorage.setItem('colorblindType', colorblindType);
+    applyColorblindMode();
+}
+
+function applyColorblindMode() {
+    const filters = {
+        normal: 'none',
+        protanomaly: 'url("#protanomaly-filter")',
+        deuteranomaly: 'url("#deuteranomaly-filter")',
+        tritanomaly: 'url("#tritanomaly-filter")',
+        protanopia: 'url("#protanopia-filter")',
+        deuteranopia: 'url("#deuteranopia-filter")',
+        tritanopia: 'url("#tritanopia-filter")',
+        achromatopsia: 'url("#achromatopsia-filter")',
+        achromatomaly: 'url("#achromatomaly-filter")'
+    };
+
+    document.body.style.filter = filters[colorblindType];
+}
+
+function applyHighContrastMode() {
+    if (highContrastMode) {
+        document.body.classList.add('high-contrast');
+    } else {
+        document.body.classList.remove('high-contrast');
+    }
+}
+
+function applyFontSize() {
+    const sizes = ['14px', '16px', '18px'];
+    document.body.style.fontSize = sizes[fontSize];
+}
+
+function updateFontSizeSlider() {
+    const fontSizeRange = document.getElementById('font-size-range');
+    if (fontSizeRange) {
+        fontSizeRange.value = fontSize;
+    }
+}
+
+function loadSettings() {
+    colorblindMode = localStorage.getItem('colorblindMode') === 'true';
+    highContrastMode = localStorage.getItem('highContrastMode') === 'true';
+    fontSize = parseInt(localStorage.getItem('fontSize'));
+    colorblindType = localStorage.getItem('colorblindType') || 'normal';
+    
+    if (isNaN(fontSize) || fontSize < 0 || fontSize > 2) {
+        fontSize = 1;
+    }
+
+    applyColorblindMode();
+    applyHighContrastMode();
+    applyFontSize();
+    updateFontSizeSlider();
+
+    const colorblindTypeSelect = document.getElementById('colorblind-type');
+    if (colorblindTypeSelect) {
+        colorblindTypeSelect.value = colorblindType;
+    }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const fontSizeRange = document.getElementById('font-size-range');
+    if (fontSizeRange) {
+        fontSizeRange.addEventListener('input', (e) => {
+            changeFontSize(parseInt(e.target.value));
+        });
+    }
+});
+
+window.onload = loadSettings;
+
+// Adicione os filtros SVG ao final do body
+document.body.insertAdjacentHTML('beforeend', `
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <defs>
+            <filter id="protanomaly-filter">
+                <feColorMatrix type="matrix" values="0.817,0.183,0,0,0 0.333,0.667,0,0,0 0,0.125,0.875,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="deuteranomaly-filter">
+                <feColorMatrix type="matrix" values="0.8,0.2,0,0,0 0.258,0.742,0,0,0 0,0.142,0.858,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="tritanomaly-filter">
+                <feColorMatrix type="matrix" values="0.967,0.033,0,0,0 0,0.733,0.267,0,0 0,0.183,0.817,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="protanopia-filter">
+                <feColorMatrix type="matrix" values="0.567,0.433,0,0,0 0.558,0.442,0,0,0 0,0.242,0.758,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="deuteranopia-filter">
+                <feColorMatrix type="matrix" values="0.625,0.375,0,0,0 0.7,0.3,0,0,0 0,0.3,0.7,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="tritanopia-filter">
+                <feColorMatrix type="matrix" values="0.95,0.05,0,0,0 0,0.433,0.567,0,0 0,0.475,0.525,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="achromatopsia-filter">
+                <feColorMatrix type="matrix" values="0.299,0.587,0.114,0,0 0.299,0.587,0.114,0,0 0.299,0.587,0.114,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="achromatomaly-filter">
+                <feColorMatrix type="matrix" values="0.618,0.320,0.062,0,0 0.163,0.775,0.062,0,0 0.163,0.320,0.516,0,0 0,0,0,1,0"/>
+            </filter>
+        </defs>
+    </svg>
+`);
+    </script>
+    
+    <script>
+        const buttons = document.querySelectorAll('.accordion-button');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+    
+            // Fecha todos os outros conteúdos
+            document.querySelectorAll('.accordion-content').forEach(item => {
+                if (item !== content) {
+                    item.style.display = 'none';
+                }
+            });
+    
+            // Alterna a exibição do conteúdo atual
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+    </script>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+    <script>
+        // salva um usuário no localStorage
+        function saveUser(username, password) {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            users.push({ username, password });
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        // verifica se um usuário existe
+        function checkUser(username, password) {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            return users.find(user => user.username === username && user.password === password);
+        }
+
+        // envia o formulário de login
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // não envia o padrão do formulário
+
+            const emailOrUser = document.getElementById('login-email').value;
+            const password = document.getElementById('login-senha').value;
+
+
+            // login bem-sucedido
+            const userFound = checkUser(emailOrUser, password);
+            const message = document.getElementById('message');
+            if (userFound) {
+                message.style.color = 'green';
+                message.innerText = 'Login bem-sucedido! Redirecionando...';
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            } else {
+                message.innerText = 'E-mail/Usuário ou senha inválidos.';
+            }
+        });
+
+        // clique no botão de cadastro
+        document.getElementById('register-button').addEventListener('click', function() {
+            window.location.href = 'cadastro.html'; // Direciona para cadastro.html
+        });
+    </script>
+
+<script>
+    // verifica o login
+    function checkLogin(emailOrUser, password) {
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        return users.find(user => 
+            (user.username === emailOrUser || user.email === emailOrUser) && user.password === password
+        );
+    }
+
+    // envia o formulário de login
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const emailOrUser = document.getElementById('login-email').value;
+        const password = document.getElementById('login-senha').value;
+
+        const userFound = checkLogin(emailOrUser, password);
+
+        if (userFound) {
+            document.getElementById('message').innerText = 'Login realizado com sucesso!';
+            setTimeout(() => {
+                window.location.href = 'index.html'; // Redireciona para a página principal após o login
+            }, 2000);
+        } else {
+            document.getElementById('message').innerText = 'Usuário ou senha incorretos.';
+        }
+    });
+</script>
+
+</body>
+</html>

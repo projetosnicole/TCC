@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IncluWork</title>
+    <link rel="icon" href="img/icontest.png" type="image/x-icon">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="img_logo">
+                <img class="img_logo" src="img/logo2.png" alt="">
+            </div>
+            <div class="sidebar" id="sidebar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>                
+                    <li><a href="vagas.html">Vagas</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>                
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-list">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>                
+                    <li><a href="vagas.html">Vagas</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>                
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="user"><a href="perfl.html"><i class="fas fa-user-circle"></i></div></a>
+
+            <div class="menu-icon" onclick="toggleMenu()">
+                &#9776;
+            </div>
+        </nav>
+    </header>
+
+    <div class="accessibility-button">
+        <button id="accessibility-toggle">
+            <i class="fas fa-universal-access"></i>
+        </button>
+    </div>
+    <div id="accessibility-menu" class="hidden">
+        <div class="font-size-slider">
+            <span class="font-size-label small">A</span>
+            <input type="range" id="font-size-range" min="0" max="3" step="1" value="1" onchange="changeFontSize(this.value)">
+            <span class="font-size-label large">A</span>
+        </div> <br>
+        <div class="botao">
+            <button id="high-contrast-btn">Alto Contraste</button> <br>
+            <button onclick="toggleLetterSpacing()">Espaçamento de Letras</button> <br>
+            <button onclick="toggleUnderline()">Sublinhar Links</button> <br>
+            <select id="colorblind-type" onchange="changeColorblindType()">
+                <option value="normal">Adaptações para daltonismo</option>
+                <optgroup label="Formas Leves">
+                    <option value="protanomaly">Protanomalia (Vermelho fraco)</option>
+                    <option value="deuteranomaly">Deuteranomalia (Verde fraco)</option>
+                    <option value="tritanomaly">Tritanomalia (Azul fraco)</option>
+                </optgroup>
+                <optgroup label="Formas Severas">
+                    <option value="protanopia">Protanopia (Sem vermelho)</option>
+                    <option value="deuteranopia">Deuteranopia (Sem verde)</option>
+                    <option value="tritanopia">Tritanopia (Sem azul)</option>
+                </optgroup>
+                <optgroup label="Monocromacia">
+                    <option value="achromatomaly">Acromatomalia (Quase sem cores)</option>
+                    <option value="achromatopsia">Acromatopsia (Sem cores)</option>
+                </optgroup>
+            </select> <br>
+            <button onclick="startReading()">Iniciar Leitura</button> <br>
+            <button onclick="stopReading()">Parar Leitura</button> <br>
+            <div class="speed-control">
+                <label for="speed">Velocidade:</label> <br>
+                <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <form class="d-flex" role="search" onsubmit="event.preventDefault(); handleSearch();">
+                    <div class="search-container">
+                        <input id="search-input" class="form-control" type="search" placeholder="O que você procura?" aria-label="Search">
+                        <button id="search-btn" class="btn-search" type="submit"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // lida com a pesquisa
+            function handleSearch() {
+                const query = document.getElementById('search-input').value.toLowerCase();
+                console.log('Consulta:', query); // Para depuração
+
+                // conteúdo da pesquisa
+                if (query.includes('home')) {
+                    window.location.href = '#home';
+                } else if (query.includes('curso')) {
+                    window.location.href = '#curso';
+                } else if (query.includes('vaga') || query.includes('vagas')) {
+                    window.location.href = '#vagas';
+                } else if (query.includes('feedback')) {
+                    window.location.href = '#feedback';
+                } else if (query.includes('duvidas') || query.includes('dúvidas')) {
+                    window.location.href = '#duvidas';
+                } else {
+                    alert('Nenhum resultado encontrado.');
+                }
+            }
+
+            // botão de pesquisa
+            document.getElementById('search-btn').addEventListener('click', function(event) {
+                event.preventDefault(); // não envia o formulário
+                handleSearch(); // chama a função de pesquisa
+            });
+        });
+    </script>
+
+    <section id="home">
+        <div class="img_topo">
+            <img class="img_topo" src="img/Rectangle 6.png" alt="">
+        </div>
+        <div class="overlay">
+            <h2 class="text-to-read">Empoderando talentos diversos para o sucesso profissional.</h2>
+        </div>
+    </section>
+
+    <section id="curso">
+        <div class="container-1">
+            <h3 class="text-to-read">Conheça nossos cursos</h3>
+            <div class="button-row">
+                <p class="text-to-read">Oferecemos conteúdo prático e atualizado para que você se destaque no mercado de trabalho e alcance seus objetivos pessoais e profissionais. Nossos treinamentos são ministrados por experts, garantindo aprendizado de qualidade e aplicabilidade imediata.</p>
+                <a href="cursos.html"><button>Ver mais</button></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="vagas">
+        <div class="container-2">
+            <h3 class="text-to-read">Encontre uma vaga na área desejada</h3>
+            <div class="button-row-1">
+                <button onclick="filtrarVaga('balconista')">
+                    <i class="fas fa-user"></i><p2 class="text-to-read">Balconista</p>
+                </button>
+                <button onclick="filtrarVaga('atendente')">
+                    <i class="fas fa-headset"></i><p2 class="text-to-read">Atendente</p>
+                </button>
+                <button onclick="filtrarVaga('auxiliar')">
+                    <i class="fas fa-user-tie"></i><p2 class="text-to-read">Auxiliar</p>
+                </button>
+                <button onclick="filtrarVaga('assistente')">
+                    <i class="fas fa-user-cog"></i><p2 class="text-to-read">Assistente</p>
+                </button>
+                <button onclick="filtrarVaga('vendedor')">
+                    <i class="fas fa-shopping-cart"></i><p2 class="text-to-read">Vendedor(a)</p>
+                </button>
+                <button onclick="filtrarVaga('recepcionista')">
+                    <i class="fas fa-user-circle"></i><p2 class="text-to-read">Recepcionista</p>
+                </button>
+            </div>
+            <div class="saiba">
+                <a href="vagas.html"><button class="text-to-read">Ver todas as vagas</button></a>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Função que redireciona para a página de vagas com o filtro como parâmetro na URL
+        function filtrarVaga(cargo) {
+            // Redireciona para a página de vagas com o parâmetro 'filtro'
+            window.location.href = 'vagas.html?filtro=' + cargo;
+        }
+    </script>    
+
+    <section id="duvidas">
+        <div class="container-3">
+            <h3 class="text-to-read">Tire algumas dúvidas...</h3>
+            <div class="img_2">
+                <img class="img_2" src="img/Rectangle 9.png">
+            </div>
+            <div class="accordion">
+                <button class="accordion-button"><p2 class="text-to-read">Os cursos disponibilizados são gratuitos e tem certificado?</p></button>
+                <div class="accordion-content">
+                    <p class="text-to-read">Sim, nossos cursos são 100% gratuitos e garantem o certificado assim que são concluidos.</p>
+                </div>
+                
+                <button class="accordion-button"><p2 class="text-to-read">Não possuo deficiência, posso me candidatar as vagas?</p2></button>
+                <div class="accordion-content">
+                    <p class="text-to-read">Pode sim, mas nossas vagas dão prioridade a pessoas deficientes.</p>
+                </div>
+                
+                <button class="accordion-button"><p2 class="text-to-read">Tem alguma restrição de deficiência?</p2></button>
+                <div class="accordion-content">
+                    <p class="text-to-read">Não, nossa plataforma inclui todos os tipos de deficiência. Tais como: intelectual, física, visual e auditiva.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="feedback">
+        <div class="container-4">
+            <div class="car">
+            <h1 class="text-to-read">Feedback</h1>
+            <div class="carousel">
+                <div class="feedback active">
+                    <blockquote><p2 class="text-to-read">Quis nostrum aliquam iste quam fugam fere sunt amet morem atque aliqua veniam tempur noster menses sunt aliquam fugit.</p2></blockquote>
+                    <div class="profile">
+                        <img src="https://via.placeholder.com/60" alt="John Larson">
+                        <div class="profile-info">
+                            <p class="name"><p2 class="text-to-read">John Larson</p2></p>
+                            <p class="role"><p2 class="text-to-read">Entrepreneur</p2></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="feedback">
+                    <blockquote><p2 class="text-to-read">Phasit dusciis justo consequat sunt sore digni espam denim porttitur enism tempur feugins. Accussamus enism sunt ut. Offiica qut.</p2></blockquote>
+                    <div class="profile">
+                        <img src="https://via.placeholder.com/60" alt="Saul Rosa Ruacan">
+                        <div class="profile-info">
+                            <p class="name"><p2 class="text-to-read">Saul Rosa Ruacan</p2></p>
+                            <p class="role"><p2 class="text-to-read">UX Designer</p2></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="feedback">
+                    <blockquote><p2 class="text-to-read">Eaperi minsor rium littem nesti malis erum quam sint esse labore quam ullam quat malis quaerat nulla nisi erum ullam erum.</p2></blockquote>
+                    <div class="profile">
+                        <img src="https://via.placeholder.com/60" alt="Sara Wilson">
+                        <div class="profile-info">
+                            <p class="name"><p2 class="text-to-read">Sara Wilson</p2></p>
+                            <p class="role"><p2 class="text-to-read">Designer</p2></p>
+                        </div>
+                    </div>
+                </div>
+                <button class="nav-button prev">&lt;</button>
+                <button class="nav-button next">&gt;</button>
+            </div>
+            <div class="dots"></div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="citação">
+        <div class="container-5">
+            <p class="text-to-read">"A verdadeira medida do sucesso de uma sociedade não é se ela pode empilhar riquezas, mas se ela pode garantir que todos os seus membros, especialmente os mais vulneráveis, tenham a oportunidade de viver uma vida plena e digna."
+                <br>
+                <br>
+                -Amartya Sen
+            </p>
+        </div>
+    </section>
+
+    <section id="tudo">
+        <div class="container-6">
+            <h1 class="text-to-read">IncluWork</h1>
+            <div class="footer">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>                
+                    <li><a href="vagas.html">Vagas</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>                
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+            <div class="email"><p>incluwork@gmail.com <br> (11) 9523-4433</p></div>
+        </div>
+
+        <footer>
+        
+        </footer>
+    </section>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script>
+
+let speech = new SpeechSynthesisUtterance();
+    const textElements = document.querySelectorAll('.text-to-read');
+    
+    function startReading() {
+        let fullText = Array.from(textElements).map(element => element.innerText).join(' ');
+        speech.text = fullText;
+        speech.rate = document.getElementById('speed').value;
+        window.speechSynthesis.speak(speech);
+    }
+
+    function stopReading() {
+        window.speechSynthesis.cancel();
+    }
+
+    document.getElementById('speed').addEventListener('input', function() {
+        speech.rate = this.value;
+    });
+
+function applyFontSize() {
+    const sizes = ['14px', '16px', '18px', '20px'];
+    const elements = document.querySelectorAll(
+        'a, button, h2, h3, h1, .accordion-button, .accordion-content'
+    );
+
+    elements.forEach((element) => {
+        element.style.fontSize = sizes[fontSize];
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const fontSizeRange = document.getElementById('font-size-range');
+    fontSizeRange.addEventListener('input', (e) => {
+        fontSize = parseInt(e.target.value);
+        applyFontSize();
+    });
+
+    // Aplicar configurações ao carregar a página
+    loadSettings();
+});
+
+
+function toggleLetterSpacing() {
+    document.body.style.letterSpacing = document.body.style.letterSpacing === '2px' ? 'normal' : '2px';
+}
+
+function toggleHighContrast() {
+    document.body.classList.toggle('high-contrast');
+}
+
+function toggleAccessibilityMenu() {
+    const menu = document.getElementById('accessibility-menu');
+    menu.classList.toggle('hidden');
+}
+
+function handleSearch() {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    console.log('Consulta:', query); 
+    // lógica de pesquisa...
+}
+
+function toggleUnderline() {
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+        link.style.textDecoration = link.style.textDecoration === 'underline' ? 'none' : 'underline';
+    });
+}
+    
+         // accessibility.js
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButton = document.getElementById('accessibility-toggle');
+        const accessibilityMenu = document.getElementById('accessibility-menu');
+
+        toggleButton.addEventListener('click', function() {
+            // Alterna a classe 'hidden' para exibir ou ocultar o menu
+            accessibilityMenu.classList.toggle('hidden');
+        });
+    });
+
+// Selecionar o botão de alto contraste
+const highContrastToggle = document.getElementById('high-contrast-btn');
+
+// Alternar o modo de alto contraste
+highContrastToggle.addEventListener('click', () => {
+  document.body.classList.toggle('high-contrast');
+});
+
+let colorblindMode = false;
+let highContrastMode = false;
+let fontSize = 1; // 0 = pequeno, 1 = médio, 2 = grande
+let colorblindType = 'normal';
+
+function toggleColorblindMode() {
+    colorblindMode = !colorblindMode;
+    localStorage.setItem('colorblindMode', colorblindMode);
+    applyColorblindMode();
+}
+
+function toggleHighContrastMode() {
+    highContrastMode = !highContrastMode;
+    localStorage.setItem('highContrastMode', highContrastMode);
+    applyHighContrastMode();
+}
+
+function changeFontSize(size) {
+    fontSize = size;
+    localStorage.setItem('fontSize', fontSize);
+    applyFontSize();
+    updateFontSizeSlider();
+}
+
+function changeColorblindType() {
+    const select = document.getElementById('colorblind-type');
+    colorblindType = select.value;
+    localStorage.setItem('colorblindType', colorblindType);
+    applyColorblindMode();
+}
+
+function applyColorblindMode() {
+    const filters = {
+        normal: 'none',
+        protanomaly: 'url("#protanomaly-filter")',
+        deuteranomaly: 'url("#deuteranomaly-filter")',
+        tritanomaly: 'url("#tritanomaly-filter")',
+        protanopia: 'url("#protanopia-filter")',
+        deuteranopia: 'url("#deuteranopia-filter")',
+        tritanopia: 'url("#tritanopia-filter")',
+        achromatopsia: 'url("#achromatopsia-filter")',
+        achromatomaly: 'url("#achromatomaly-filter")'
+    };
+
+    document.body.style.filter = filters[colorblindType];
+}
+
+function applyHighContrastMode() {
+    if (highContrastMode) {
+        document.body.classList.add('high-contrast');
+    } else {
+        document.body.classList.remove('high-contrast');
+    }
+}
+
+function applyFontSize() {
+    const sizes = ['14px', '16px', '18px'];
+    document.body.style.fontSize = sizes[fontSize];
+}
+
+function updateFontSizeSlider() {
+    const fontSizeRange = document.getElementById('font-size-range');
+    if (fontSizeRange) {
+        fontSizeRange.value = fontSize;
+    }
+}
+
+function loadSettings() {
+    colorblindMode = localStorage.getItem('colorblindMode') === 'true';
+    highContrastMode = localStorage.getItem('highContrastMode') === 'true';
+    fontSize = parseInt(localStorage.getItem('fontSize'));
+    colorblindType = localStorage.getItem('colorblindType') || 'normal';
+    
+    if (isNaN(fontSize) || fontSize < 0 || fontSize > 2) {
+        fontSize = 1;
+    }
+
+    applyColorblindMode();
+    applyHighContrastMode();
+    applyFontSize();
+    updateFontSizeSlider();
+
+    const colorblindTypeSelect = document.getElementById('colorblind-type');
+    if (colorblindTypeSelect) {
+        colorblindTypeSelect.value = colorblindType;
+    }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const fontSizeRange = document.getElementById('font-size-range');
+    if (fontSizeRange) {
+        fontSizeRange.addEventListener('input', (e) => {
+            changeFontSize(parseInt(e.target.value));
+        });
+    }
+});
+
+window.onload = loadSettings;
+
+// Adicione os filtros SVG ao final do body
+document.body.insertAdjacentHTML('beforeend', `
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <defs>
+            <filter id="protanomaly-filter">
+                <feColorMatrix type="matrix" values="0.817,0.183,0,0,0 0.333,0.667,0,0,0 0,0.125,0.875,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="deuteranomaly-filter">
+                <feColorMatrix type="matrix" values="0.8,0.2,0,0,0 0.258,0.742,0,0,0 0,0.142,0.858,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="tritanomaly-filter">
+                <feColorMatrix type="matrix" values="0.967,0.033,0,0,0 0,0.733,0.267,0,0 0,0.183,0.817,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="protanopia-filter">
+                <feColorMatrix type="matrix" values="0.567,0.433,0,0,0 0.558,0.442,0,0,0 0,0.242,0.758,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="deuteranopia-filter">
+                <feColorMatrix type="matrix" values="0.625,0.375,0,0,0 0.7,0.3,0,0,0 0,0.3,0.7,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="tritanopia-filter">
+                <feColorMatrix type="matrix" values="0.95,0.05,0,0,0 0,0.433,0.567,0,0 0,0.475,0.525,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="achromatopsia-filter">
+                <feColorMatrix type="matrix" values="0.299,0.587,0.114,0,0 0.299,0.587,0.114,0,0 0.299,0.587,0.114,0,0 0,0,0,1,0"/>
+            </filter>
+            <filter id="achromatomaly-filter">
+                <feColorMatrix type="matrix" values="0.618,0.320,0.062,0,0 0.163,0.775,0.062,0,0 0.163,0.320,0.516,0,0 0,0,0,1,0"/>
+            </filter>
+        </defs>
+    </svg>
+`);
+    </script>
+    
+    <script>
+        const buttons = document.querySelectorAll('.accordion-button');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+    
+            // Fecha todos os outros conteúdos
+            document.querySelectorAll('.accordion-content').forEach(item => {
+                if (item !== content) {
+                    item.style.display = 'none';
+                }
+            });
+    
+            // Alterna a exibição do conteúdo atual
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+    </script>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+    <script src="script.js"></script>
+</body>
+</html>

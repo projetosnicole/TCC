@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f3f3;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-container {
+    display: flex;
+    background-color: #eef5f4;
+    width: 400px;
+    height: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.logo {
+    background-color: #96d2cb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    padding: 20px;
+    position: relative;
+}
+
+.logo-placeholder {
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.form {
+    background-color: #2f3b4a;
+    color: white;
+    width: 60%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-size: 0.9em;
+}
+
+input, select {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="date"], select {
+    background-color: #f3f3f3;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00c2b2;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button.google-login {
+    background-color: #475a66;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+button.google-login:before {
+    content: "G";
+    font-size: 1.5em;
+    background-color: white;
+    color: #475a66;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    color: #d1d1d1;
+}
