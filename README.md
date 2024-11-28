@@ -1,3 +1,3 @@
 # TCC
 
-http://nicolliegoes.github.io/TCC
+https://projetosnicole.github.io/TCC/
